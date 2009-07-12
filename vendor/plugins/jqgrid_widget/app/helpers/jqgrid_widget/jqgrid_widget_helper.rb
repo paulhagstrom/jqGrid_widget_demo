@@ -247,7 +247,8 @@ module JqgridWidget::JqgridWidgetHelper
           .click(function() {
             jQuery.getScript('#{subfilter_open}&catid='+jQuery(this).attr('id'));
             });
-        jQuery.getScript('#{filter_counts}');
+        jQuery.getScript('#{subfilter_open}&init=yes'); // open the default filter
+        jQuery.getScript('#{filter_counts}'); // fill in the filter counts
       });
     JS
   end

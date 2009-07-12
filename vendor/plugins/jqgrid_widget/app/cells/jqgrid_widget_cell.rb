@@ -125,13 +125,12 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   #   @children_to_hide = ['person_student_degrees_list', 'person_employee_sections_list']
   #   nil
   # end
-  
+  # TODO: Perhaps later I may want to be able to make the default filter not be the first one?
   def _setup
     @collapse_if_empty = false
     @find_include = nil
     
     @filters = [['all', {:name => 'All'}]]
-    @filter = 'all'
     
     @columns  = []
     @row_panel = '_panel'
@@ -260,7 +259,6 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   end
   
   # This is the actual method that queries the database.
-  # TODO: make the count actually be right.
   def load_records
     @filter, @subfilter, find_include, find_conditions, @total_records = filter_prepare
     sord = (@sord == 'desc') ? 'DESC' : 'ASC'
@@ -291,12 +289,13 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
     end
   end
   
-  # Prepare the instance variables for load_record, using the filter, returns the total count
-  # (So, this is also used just to get the count without actually loading the records)
+  # Prepare the instance variables for load_record, using the filter, returns things
+  # used by load_records (but is also used without load_records to retrieve the
+  # record counts for the individual filters)
   def filter_prepare(current_filter = @filter, subfilter = @subfilter)
-    current_filter ||= @filters.first[0]
+    verified_filter = @filters.assoc(current_filter) ? current_filter : @filters.first[0]
     subfilter ||= {}
-    filter = @filters.assoc(current_filter)[1]
+    filter = @filters.assoc(verified_filter)[1]
     # I had to do this in this kind of funny way to avoid actually modifying @filters.
     find_conditions = []
     find_include = []
@@ -311,7 +310,7 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
     end
     total_records = scoped_model.count(:all, :include => find_include, :conditions => find_conditions)
     # puts "%%%%% FILTER INFO IN FILTER_PREPARE: include:[#{find_include.inspect}], conditions:[#{find_conditions.inspect}]."
-    return[current_filter, subfilter, find_include, find_conditions, total_records]
+    return[verified_filter, subfilter, find_include, find_conditions, total_records]
   end
   
   # This is the state that is invoked when an edit panel is to be displayed.
@@ -343,21 +342,28 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
     if param(:catid)
       catsplit = param(:catid).split('__')
       filter = catsplit[0]
+      category_not_clicked = false
     else
       filter = param(:filter)
+      category_not_clicked = true
     end
     new_filter = @filters.assoc(filter) ? filter : @filters.first[0]
-    redraw_filter = (@filter != new_filter)
-    clear_checkboxes = redraw_filter || (!redraw_filter && param(:catid))
+    filter_unchanged = (@filter == new_filter)
+    if param(:init)
+      filter_unchanged = false
+    end
     @filter = new_filter
     @subfilter = param(:subfilter) ? param(:subfilter) : {}
-    return(_send_recordset(false,
-    (redraw_filter ? ("jQuery('##{@jqgrid_id}_filter_header').find('.ui-state-highlight').removeClass('ui-state-highlight').addClass('ui-state-default');" +
-      "jQuery('##{@filter}__#{@jqgrid_id}_filter_category').addClass('ui-state-highlight');" +
-      "jQuery('.jqgw-filter-open').removeClass('jqgw-filter-open').slideUp('normal');" +
-      "jQuery('##{@jqgrid_id}_#{@filter}_filter_form').addClass('jqgw-filter-open').slideDown('normal');") : '') +
-    (clear_checkboxes ? "jQuery('##{@jqgrid_id}_#{@filter}_filter_form').find('input[type=checkbox]').attr('checked',false);" : ''),
-    true))
+    redraw_filter = filter_unchanged ? '' : <<-JS
+      jQuery('##{@jqgrid_id}_filter_header').find('.ui-state-highlight').removeClass('ui-state-highlight').addClass('ui-state-default');
+      jQuery('##{@filter}__#{@jqgrid_id}_filter_category').addClass('ui-state-highlight');
+      jQuery('.jqgw-filter-open').removeClass('jqgw-filter-open').slideUp('normal');
+      jQuery('##{@jqgrid_id}_#{@filter}_filter_form').addClass('jqgw-filter-open').slideDown('normal');
+    JS
+    clear_checkboxes = (filter_unchanged && category_not_clicked) ? '' : <<-JS
+      jQuery('##{@jqgrid_id}_#{@filter}_filter_form').find('input[type=checkbox]').attr('checked',false);
+    JS
+    return(_send_recordset(false, redraw_filter + clear_checkboxes))
   end
 
   # This redraws the whole filter div

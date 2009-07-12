@@ -17,7 +17,7 @@ function activateTitleBar(table) {
     	}
 	});
 }
-// The hideTable and openTable functions just provide a way to "click on the collapse icon" programmatically.
+// The hideTable and openTable functions provide a way to "click on the collapse icon" programmatically.
 function hideTable(table) {
 	if (jQuery(table).getGridParam('gridstate') == 'visible') {
 		jQuery(table).closest('.ui-jqgrid-view').find('.ui-jqgrid-titlebar-close').trigger('click');
@@ -29,55 +29,44 @@ function openTable(table) {
 	}
 }
 
-// The following functions implement a pre-cache for JSON requests, which allow for the parent to send data updates
-// for itself and all children at once.  It is hooked into jQGrid as a function datatype, with an option like this:
+// The following functions implement a pre-cache for JSON requests, which allow for
+// the parent widget to send data updates for itself and all children at once to minimize
+// AJAX requests.  It is hooked into jQGrid as a function datatype, with an option like this:
 // datatype: function(pdata) { retrieveJSON('table_id_selector','url/to/retrieve',pdata); }
-// Cached data will be passed back; if there is nothing cached, then an AJAX call will be made for data.
-// If the 'bundle' userdata flag is set, then a request will be made for bundled data (really just Javascript).
-// This doesn't seem to work with the routing format parameter, so it now depends on there being a _bundle state
-// that is formed from the name of the JSON state plus _bundle.  That's kind of suboptimal.
-// Moreover, it doesn't really work.
+// Cached data will be passed back, or, if there is nothing cached, then data is requested.
 var pendingJSON = new Array();
 function retrieveJSON(table,purl,pdata) {
 	var ts = jQuery(table)[0],
 	loadComplete = jQuery.isFunction(ts.p.loadComplete) ? ts.p.loadComplete : false;
-	if(jqgw_debug > 0) console.log('retrieveJSON here: called for table ' + table);
 	if (pendingJSON[table] == null) {
-		if(jqgw_debug) console.log('Nothing in the cache, have to call the server.');
 		indicateReq(table);
-		jQuery.getScript(purl+'&'+jQuery.param(pdata)+'&bundle=yes');
+		jQuery.getScript(purl+'&'+jQuery.param(pdata));
 	} else {
-		if(jqgw_debug > 1) console.log('Already had it in the cache.');
 		ts.addJSONData(eval("("+pendingJSON[table]+")"));
 		if(loadComplete) loadComplete(pendingJSON[table],'success');
 		delete pendingJSON[table];
 	}
 }
-// Having this in its own function is probably pointless, but here it is anyway.
-// This pushes the JSON data for a given table into the cache.
 function pushJSON(table,json) {
   pendingJSON[table] = json;
 }
-// jQGrid's "loading" behavior is hidden away as a private function, so I duplicated the essence of its
-// beginReq() function here.  It is used to send the UI for child tables into the loading state while the parent loads.
-// The table is expanded when this happens, in order for the "loading..." message to appear in a sensible place.
+// jQGrid's "loading" UI behavior is hidden away as a private function, so I duplicated
+// the basic essence of its beginReq() function here.  It is used to send the UI for child
+// tables into the "loading" state while the parent loads. The table is expanded when this
+// happens, in order for the "loading..." message to appear in a sensible place.
 // I also ditched the beforeRequest and the check for initial collapsed status.
 function indicateReq(table) {
   var ts = jQuery(table)[0];
-	//beReq = jQuery.isFunction(ts.p.beforeRequest) ? ts.p.beforeRequest : false;
-	//if(beReq) {ts.p.beforeRequest();}
-	//ts.grid.hDiv.loading = true;
 	openTable(table);
-	//if(ts.p.hiddengrid) { return;}
 	switch(ts.p.loadui) {
 		case "disable":
 			break;
 		case "enable":
-			$("#load_"+ts.p.id).show();
+			jQuery("#load_"+ts.p.id).show();
 			break;
 		case "block":
-			$("#lui_"+ts.p.id).show();
-			$("#load_"+ts.p.id).show();
+			jQuery("#lui_"+ts.p.id).show();
+			jQuery("#load_"+ts.p.id).show();
 			break;
 	}
 }
