@@ -4914,3 +4914,468 @@ Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 1
   [4;35;1mCode Load Including Associations (1.0ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 15) ORDER BY semesters.start_date DESC LIMIT 1[0m
   [4;36;1mEmployee Load (0.2ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees".person_id = 16) [0m
 Completed in 1477ms (View: 5, DB: 262) | 200 OK [http://localhost/people/render_event_response?apotomo_action=event&source=per_person&type=per_person__set_filter&catid=all__per_people_list_filter_category&_=1247417607606]
+
+
+Processing PeopleController#peoplecell (for 127.0.0.1 at 2009-07-12 13:09:14) [GET]
+  [4;36;1mDegree Load (0.8ms)[0m   [0;1mSELECT * FROM "degrees" [0m
+  [4;35;1mProgram Load (0.4ms)[0m   [0mSELECT * FROM "programs" [0m
+  [4;36;1mEmployeeSection Load (0.5ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections"."is_advisor" = 't') [0m
+  [4;35;1mEmployee Load (0.4ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;35;1mStatus Load (0.5ms)[0m   [0mSELECT * FROM "statuses" [0m
+  [4;36;1mSection Load (0.6ms)[0m   [0;1mSELECT * FROM "sections" [0m
+Rendered logs/_setup (3.1ms)
+Rendered contacts/_setup (37.6ms)
+Rendered employee_sections/_setup (5.7ms)
+Rendered employees/_setup (6.4ms)
+Rendered advisors/_setup (7.7ms)
+Rendered student_degrees/_setup (14.7ms)
+Rendered students/_setup (3.1ms)
+Rendered people/_setup (10.5ms)
+Rendering template within layouts/admin_jquery
+Rendering people/peoplecell
+Completed in 2815ms (View: 116, DB: 4) | 200 OK [http://localhost/people/peoplecell]
+
+
+Processing PeopleController#peoplecell (for 127.0.0.1 at 2009-07-12 13:12:03) [GET]
+  [4;35;1mDegree Load (0.8ms)[0m   [0mSELECT * FROM "degrees" [0m
+  [4;36;1mProgram Load (0.5ms)[0m   [0;1mSELECT * FROM "programs" [0m
+  [4;35;1mEmployeeSection Load (0.5ms)[0m   [0mSELECT * FROM "employee_sections" WHERE ("employee_sections"."is_advisor" = 't') [0m
+  [4;36;1mEmployee Load (0.4ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mPerson Load (12.7ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mStatus Load (0.6ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+  [4;35;1mSection Load (0.5ms)[0m   [0mSELECT * FROM "sections" [0m
+Rendered logs/_setup (30.9ms)
+Rendered contacts/_setup (39.5ms)
+Rendered employee_sections/_setup (2.5ms)
+Rendered employees/_setup (3.2ms)
+Rendered advisors/_setup (45.7ms)
+Rendered student_degrees/_setup (5.9ms)
+Rendered students/_setup (12.8ms)
+Rendered people/_setup (5.6ms)
+Rendering template within layouts/admin_jquery
+Rendering people/peoplecell
+Completed in 1652ms (View: 24, DB: 62) | 200 OK [http://localhost/people/peoplecell]
+
+
+Processing PeopleController#peoplecell (for 127.0.0.1 at 2009-07-12 13:12:05) [GET]
+  [4;36;1mDegree Load (0.8ms)[0m   [0;1mSELECT * FROM "degrees" [0m
+  [4;35;1mProgram Load (0.5ms)[0m   [0mSELECT * FROM "programs" [0m
+  [4;36;1mEmployeeSection Load (0.4ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections"."is_advisor" = 't') [0m
+  [4;35;1mEmployee Load (0.4ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;36;1mPerson Load (6.4ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;35;1mStatus Load (0.6ms)[0m   [0mSELECT * FROM "statuses" [0m
+  [4;36;1mSection Load (0.6ms)[0m   [0;1mSELECT * FROM "sections" [0m
+Rendered logs/_setup (2.8ms)
+Rendered contacts/_setup (46.1ms)
+Rendered employee_sections/_setup (15.8ms)
+Rendered employees/_setup (2.9ms)
+Rendered advisors/_setup (5.0ms)
+Rendered student_degrees/_setup (5.1ms)
+Rendered students/_setup (2.9ms)
+Rendered people/_setup (4.5ms)
+Rendering template within layouts/admin_jquery
+Rendering people/peoplecell
+Completed in 1562ms (View: 4, DB: 11) | 200 OK [http://localhost/people/peoplecell]
+
+
+Processing PeopleController#peoplecell (for 127.0.0.1 at 2009-07-12 13:12:56) [GET]
+  [4;35;1mDegree Load (7.7ms)[0m   [0mSELECT * FROM "degrees" [0m
+  [4;36;1mProgram Load (0.5ms)[0m   [0;1mSELECT * FROM "programs" [0m
+  [4;35;1mEmployeeSection Load (0.5ms)[0m   [0mSELECT * FROM "employee_sections" WHERE ("employee_sections"."is_advisor" = 't') [0m
+  [4;36;1mEmployee Load (0.4ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mStatus Load (0.6ms)[0m   [0;1mSELECT * FROM "statuses" [0m
+  [4;35;1mSection Load (1.1ms)[0m   [0mSELECT * FROM "sections" [0m
+Rendered logs/_setup (6.1ms)
+Rendered contacts/_setup (2.7ms)
+Rendered employee_sections/_setup (2.5ms)
+Rendered employees/_setup (2.9ms)
+Rendered advisors/_setup (2.4ms)
+Rendered student_degrees/_setup (4.8ms)
+Rendered students/_setup (10.8ms)
+Rendered people/_setup (61.6ms)
+Rendering template within layouts/admin_jquery
+Rendering people/peoplecell
+Completed in 2288ms (View: 82, DB: 26) | 200 OK [http://localhost/people/peoplecell]
+
+
+Processing PeopleController#peoplecell (for 127.0.0.1 at 2009-07-12 13:12:59) [GET]
+  [4;36;1mDegree Load (0.8ms)[0m   [0;1mSELECT * FROM "degrees" [0m
+  [4;35;1mProgram Load (0.4ms)[0m   [0mSELECT * FROM "programs" [0m
+  [4;36;1mEmployeeSection Load (0.5ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections"."is_advisor" = 't') [0m
+  [4;35;1mEmployee Load (0.4ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;36;1mPerson Load (26.5ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;35;1mStatus Load (0.6ms)[0m   [0mSELECT * FROM "statuses" [0m
+  [4;36;1mSection Load (0.6ms)[0m   [0;1mSELECT * FROM "sections" [0m
+Rendered logs/_setup (2.5ms)
+Rendered contacts/_setup (2.4ms)
+Rendered employee_sections/_setup (4.6ms)
+Rendered employees/_setup (42.9ms)
+Rendered advisors/_setup (3.9ms)
+Rendered student_degrees/_setup (15.3ms)
+Rendered students/_setup (46.6ms)
+Rendered people/_setup (18.2ms)
+Rendering template within layouts/admin_jquery
+Rendering people/peoplecell
+Completed in 1895ms (View: 4, DB: 35) | 200 OK [http://localhost/people/peoplecell]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:13:09) [GET]
+  Parameters: {"nd"=>"1247418789482", "sord"=>"asc", "type"=>"per_person__send_recordset", "apotomo_action"=>"event", "bundle"=>"yes", "_search"=>"false", "rows"=>"2", "page"=>"1", "source"=>"per_person", "_"=>"1247418789541", "sidx"=>"name"}
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "people" [0m
+  [4;36;1mPerson Load (1.2ms)[0m   [0;1mSELECT * FROM "people" ORDER BY name ASC LIMIT 2 OFFSET 0[0m
+  [4;35;1mStudent Load (0.7ms)[0m   [0mSELECT * FROM "students" WHERE ("students".person_id = 18) [0m
+  [4;36;1mDegree Load (0.7ms)[0m   [0;1mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 12)) [0m
+  [4;35;1mProgram Load (0.3ms)[0m   [0mSELECT * FROM "programs" WHERE ("programs"."id" = 8) [0m
+  [4;36;1mAdvisor Load (28.4ms)[0m   [0;1mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 20)) [0m
+  [4;35;1mEmployee Load (0.3ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;35;1mStatus Load (0.4ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;36;1mCode Load Including Associations (1.0ms)[0m   [0;1mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 12) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;35;1mDegree Load (0.3ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 13)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (0.9ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 13) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mDegree Load (0.3ms)[0m   [0;1mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 14)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;36;1mCode Load Including Associations (0.8ms)[0m   [0;1mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 14) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;35;1mEmployee Load (0.4ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees".person_id = 18) [0m
+  [4;36;1mEmployeeSection Load (5.3ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 8) [0m
+  [4;35;1mSection Load (0.3ms)[0m   [0mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;36;1mStudent Load (0.2ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students".person_id = 15) [0m
+  [4;35;1mEmployee Load (1.1ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees".person_id = 15) [0m
+  [4;36;1mEmployeeSection Load (0.3ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 7) [0m
+  [4;35;1mSection Load (0.3ms)[0m   [0mSELECT * FROM "sections" WHERE ("sections"."id" = 11) [0m
+  [4;36;1mEmployeeSection Load (2.4ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 9) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;36;1mSection Load (0.4ms)[0m   [0;1mSELECT * FROM "sections" WHERE ("sections"."id" = 12) [0m
+  [4;35;1mEmployeeSection Load (0.3ms)[0m   [0mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 12) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+Completed in 1853ms (View: 10, DB: 112) | 200 OK [http://localhost/people/render_event_response?apotomo_action=event&source=per_person&type=per_person__send_recordset&nd=1247418789482&_search=false&rows=2&page=1&sidx=name&sord=asc&bundle=yes&_=1247418789541]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:13:11) [GET]
+  Parameters: {"type"=>"per_person__filter_display", "apotomo_action"=>"data", "source"=>"per_person"}
+Rendered logs/_setup (2.5ms)
+Rendered contacts/_setup (20.1ms)
+Rendered employee_sections/_setup (2.5ms)
+Rendered employees/_setup (3.4ms)
+Rendered advisors/_setup (2.5ms)
+Rendered student_degrees/_setup (55.2ms)
+Rendered students/_setup (12.7ms)
+Rendered people/_filters (85.7ms)
+Completed in 1961ms (View: 7, DB: 14) | 200 OK [http://localhost/people/render_event_response?apotomo_action=data&source=per_person&type=per_person__filter_display]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:13:14) [GET]
+  Parameters: {"type"=>"per_person__filter_counts", "apotomo_action"=>"data", "source"=>"per_person", "_"=>"1247418794052"}
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id LEFT OUTER JOIN "students" students_people ON students_people.person_id = people.id LEFT OUTER JOIN "student_degrees" ON student_degrees.student_id = students_people.id WHERE (students.id > 0 and student_degrees.degree_id in (16)) [0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id LEFT OUTER JOIN "students" students_people ON students_people.person_id = people.id LEFT OUTER JOIN "student_degrees" ON student_degrees.student_id = students_people.id WHERE (students.id > 0 and student_degrees.degree_id in (17)) [0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id LEFT OUTER JOIN "students" students_people ON students_people.person_id = people.id LEFT OUTER JOIN "student_degrees" ON student_degrees.student_id = students_people.id WHERE (students.id > 0 and student_degrees.degree_id in (18)) [0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id LEFT OUTER JOIN "students" students_people ON students_people.person_id = people.id LEFT OUTER JOIN "student_degrees" ON student_degrees.student_id = students_people.id WHERE (students.id > 0 and student_degrees.degree_id in (19)) [0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id LEFT OUTER JOIN "students" students_people ON students_people.person_id = people.id LEFT OUTER JOIN "student_degrees" ON student_degrees.student_id = students_people.id WHERE (students.id > 0 and student_degrees.degree_id in (20)) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id WHERE (students.id > 0 and students.program_id in (7)) [0m
+  [4;36;1mSQL (4.3ms)[0m   [0;1mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id WHERE (students.id > 0 and students.program_id in (8)) [0m
+  [4;35;1mSQL (55.5ms)[0m   [0mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id LEFT OUTER JOIN "students" students_people ON students_people.person_id = people.id LEFT OUTER JOIN "student_degrees" ON ("students_people"."id" = "student_degrees"."student_id") LEFT OUTER JOIN "advisors" ON ("advisors"."student_degree_id" = "student_degrees"."id") WHERE (students.id > 0 and advisors.employee_id in (7)) [0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id WHERE (students.id > 0 and students.status_id in (10)) [0m
+  [4;35;1mSQL (4.1ms)[0m   [0mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id WHERE (students.id > 0 and students.status_id in (11)) [0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "students" ON students.person_id = people.id WHERE (students.id > 0 and students.status_id in (12)) [0m
+  [4;35;1mSQL (4.5ms)[0m   [0mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "employees" ON employees.person_id = people.id LEFT OUTER JOIN "employees" employees_people ON employees_people.person_id = people.id LEFT OUTER JOIN "employee_sections" ON employee_sections.employee_id = employees_people.id WHERE (employees.id > 0 and employee_sections.section_id in (10)) [0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "employees" ON employees.person_id = people.id LEFT OUTER JOIN "employees" employees_people ON employees_people.person_id = people.id LEFT OUTER JOIN "employee_sections" ON employee_sections.employee_id = employees_people.id WHERE (employees.id > 0 and employee_sections.section_id in (11)) [0m
+  [4;35;1mSQL (38.1ms)[0m   [0mSELECT count(DISTINCT "people".id) AS count_all FROM "people" LEFT OUTER JOIN "employees" ON employees.person_id = people.id LEFT OUTER JOIN "employees" employees_people ON employees_people.person_id = people.id LEFT OUTER JOIN "employee_sections" ON employee_sections.employee_id = employees_people.id WHERE (employees.id > 0 and employee_sections.section_id in (12)) [0m
+Completed in 1603ms (View: 2, DB: 131) | 200 OK [http://localhost/people/render_event_response?apotomo_action=data&source=per_person&type=per_person__filter_counts&_=1247418794052]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:13:16) [GET]
+  Parameters: {"type"=>"rowClick", "id"=>"18", "apotomo_action"=>"event", "bundle"=>"yes", "source"=>"per_person", "_"=>"1247418796285"}
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = '18') LIMIT 1[0m
+  [4;35;1mSQL (4.7ms)[0m   [0mSELECT count(*) AS count_all FROM "logs" WHERE ("logs".person_id = 18) [0m
+  [4;36;1mLog Load (1.0ms)[0m   [0;1mSELECT * FROM "logs" WHERE ("logs".person_id = 18) ORDER BY created_at ASC LIMIT 1 OFFSET 0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(DISTINCT "contacts".id) AS count_all FROM "contacts" LEFT OUTER JOIN "contact_types" ON "contact_types".id = "contacts".contact_type_id WHERE ("contacts".person_id = 18) [0m
+  [4;35;1mContact Load Including Associations (1.3ms)[0m   [0mSELECT "contacts"."id" AS t0_r0, "contacts"."person_id" AS t0_r1, "contacts"."contact_type_id" AS t0_r2, "contacts"."body" AS t0_r3, "contacts"."created_at" AS t0_r4, "contacts"."updated_at" AS t0_r5, "contact_types"."id" AS t1_r0, "contact_types"."contact_type_id" AS t1_r1, "contact_types"."name" AS t1_r2, "contact_types"."is_private" AS t1_r3, "contact_types"."created_at" AS t1_r4, "contact_types"."updated_at" AS t1_r5 FROM "contacts" LEFT OUTER JOIN "contact_types" ON "contact_types".id = "contacts".contact_type_id WHERE ("contacts".person_id = 18) ORDER BY contact_types.name ASC LIMIT 2 OFFSET 0[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "employees" WHERE ("employees".person_id = 18) [0m
+  [4;35;1mEmployee Load (1.2ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees".person_id = 18) ORDER BY blurb ASC LIMIT 1 OFFSET 0[0m
+  [4;36;1mEmployee Load (27.8ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 8) LIMIT 1[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSELECT count(DISTINCT "students".id) AS count_all FROM "students" LEFT OUTER JOIN "statuses" ON "statuses".id = "students".status_id WHERE ("students".person_id = 18) [0m
+  [4;36;1mStudent Load Including Associations (1.4ms)[0m   [0;1mSELECT "students"."id" AS t0_r0, "students"."person_id" AS t0_r1, "students"."program_id" AS t0_r2, "students"."status_id" AS t0_r3, "students"."graduating" AS t0_r4, "students"."graduated" AS t0_r5, "students"."other_degrees" AS t0_r6, "students"."created_at" AS t0_r7, "students"."updated_at" AS t0_r8, "statuses"."id" AS t1_r0, "statuses"."name" AS t1_r1, "statuses"."description" AS t1_r2, "statuses"."created_at" AS t1_r3, "statuses"."updated_at" AS t1_r4 FROM "students" LEFT OUTER JOIN "statuses" ON "statuses".id = "students".status_id WHERE ("students".person_id = 18) ORDER BY statuses.name ASC LIMIT 3 OFFSET 0[0m
+  [4;35;1mStudent Load (34.0ms)[0m   [0mSELECT * FROM "students" WHERE ("students"."id" = 12) LIMIT 1[0m
+  [4;36;1mSQL (16.1ms)[0m   [0;1mSELECT count(DISTINCT "employee_sections".id) AS count_all FROM "employee_sections" LEFT OUTER JOIN "sections" ON "sections".id = "employee_sections".section_id WHERE ("employee_sections".employee_id = 8) [0m
+  [4;35;1mEmployeeSection Load Including Associations (1.1ms)[0m   [0mSELECT "employee_sections"."id" AS t0_r0, "employee_sections"."employee_id" AS t0_r1, "employee_sections"."section_id" AS t0_r2, "employee_sections"."is_advisor" AS t0_r3, "employee_sections"."title" AS t0_r4, "employee_sections"."created_at" AS t0_r5, "employee_sections"."updated_at" AS t0_r6, "sections"."id" AS t1_r0, "sections"."name" AS t1_r1, "sections"."created_at" AS t1_r2, "sections"."updated_at" AS t1_r3 FROM "employee_sections" LEFT OUTER JOIN "sections" ON "sections".id = "employee_sections".section_id WHERE ("employee_sections".employee_id = 8) ORDER BY sections.name ASC LIMIT 1 OFFSET 0[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSELECT count(DISTINCT "student_degrees".id) AS count_all FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id LEFT OUTER JOIN "advisors" ON advisors.student_degree_id = student_degrees.id LEFT OUTER JOIN "employees" ON "employees".id = "advisors".employee_id LEFT OUTER JOIN "people" ON "people".id = "employees".person_id WHERE ("student_degrees".student_id = 12) [0m
+  [4;35;1mStudentDegree Load IDs For Limited Eager Loading (8.9ms)[0m   [0mSELECT DISTINCT "student_degrees".id FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id WHERE ("student_degrees".student_id = 12) ORDER BY degrees.name ASC LIMIT 1 OFFSET 0[0m
+  [4;36;1mStudentDegree Load Including Associations (41.1ms)[0m   [0;1mSELECT "student_degrees"."id" AS t0_r0, "student_degrees"."student_id" AS t0_r1, "student_degrees"."degree_id" AS t0_r2, "student_degrees"."created_at" AS t0_r3, "student_degrees"."updated_at" AS t0_r4, "degrees"."id" AS t1_r0, "degrees"."section_id" AS t1_r1, "degrees"."program_id" AS t1_r2, "degrees"."name" AS t1_r3, "degrees"."created_at" AS t1_r4, "degrees"."updated_at" AS t1_r5, "advisors"."id" AS t2_r0, "advisors"."student_degree_id" AS t2_r1, "advisors"."employee_id" AS t2_r2, "advisors"."start_date" AS t2_r3, "advisors"."end_date" AS t2_r4, "advisors"."created_at" AS t2_r5, "advisors"."updated_at" AS t2_r6, "employees"."id" AS t3_r0, "employees"."person_id" AS t3_r1, "employees"."blurb" AS t3_r2, "employees"."created_at" AS t3_r3, "employees"."updated_at" AS t3_r4, "people"."id" AS t4_r0, "people"."name" AS t4_r1, "people"."created_at" AS t4_r2, "people"."updated_at" AS t4_r3 FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id LEFT OUTER JOIN "advisors" ON advisors.student_degree_id = student_degrees.id LEFT OUTER JOIN "employees" ON "employees".id = "advisors".employee_id LEFT OUTER JOIN "people" ON "people".id = "employees".person_id WHERE ("student_degrees".student_id = 12) AND "student_degrees".id IN (17) ORDER BY degrees.name ASC[0m
+  [4;35;1mStudentDegree Load (0.5ms)[0m   [0mSELECT * FROM "student_degrees" WHERE ("student_degrees"."id" = 17) LIMIT 1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(DISTINCT "advisors".id) AS count_all FROM "advisors" LEFT OUTER JOIN "employees" ON "employees".id = "advisors".employee_id LEFT OUTER JOIN "people" ON "people".id = "employees".person_id WHERE ("advisors".student_degree_id = 17) [0m
+  [4;35;1mAdvisor Load (70.8ms)[0m   [0mSELECT * FROM "advisors" WHERE ("advisors".student_degree_id = 17) ORDER BY employee_id ASC LIMIT 2 OFFSET 0[0m
+  [4;36;1mEmployee Load (0.4ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+Completed in 2424ms (View: 4, DB: 220) | 200 OK [http://localhost/people/render_event_response?apotomo_action=event&source=per_person&type=rowClick&bundle=yes&id=18&_=1247418796285]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:13:19) [POST]
+  Parameters: {"type"=>"openEditPanel", "authenticity_token"=>"RADSrPqfyyi2rRO/KX0LzrQ6TfyoiuXdhI3ep/jAFEI=", "id"=>"18", "apotomo_action"=>"data", "table"=>"per_people_list", "panel"=>"0", "source"=>"per_person"}
+  [4;36;1mPerson Load (0.4ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = '18') LIMIT 1[0m
+Rendered logs/_setup (4.7ms)
+Rendered contacts/_setup (55.6ms)
+Rendered employee_sections/_setup (76.5ms)
+Rendered employees/_setup (144.5ms)
+Rendered advisors/_setup (2.4ms)
+Rendered student_degrees/_setup (7.4ms)
+Rendered students/_setup (14.2ms)
+Rendered people/_panel (5.0ms)
+Completed in 2129ms (View: 8, DB: 4) | 200 OK [http://localhost/people/render_event_response?apotomo_action=data&source=per_person&type=openEditPanel]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:13:24) [POST]
+  Parameters: {"type"=>"per_person__edit_panel_submit", "authenticity_token"=>"RADSrPqfyyi2rRO/KX0LzrQ6TfyoiuXdhI3ep/jAFEI=", "apotomo_action"=>"event", "source"=>"per_person", "person"=>{"name"=>"Ed Staffx"}}
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 18) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM "people" [0m
+  [4;35;1mPerson Load (1.2ms)[0m   [0mSELECT * FROM "people" ORDER BY name ASC LIMIT 4 OFFSET 0[0m
+  [4;36;1mStudent Load (0.7ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students".person_id = 18) [0m
+  [4;35;1mDegree Load (0.5ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 12)) [0m
+  [4;36;1mProgram Load (0.3ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 8) [0m
+  [4;35;1mAdvisor Load (0.5ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 20)) [0m
+  [4;36;1mEmployee Load (0.5ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mPerson Load (0.4ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mStatus Load (0.4ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (1.0ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 12) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mDegree Load (0.3ms)[0m   [0;1mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 13)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;36;1mCode Load Including Associations (1.5ms)[0m   [0;1mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 13) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;35;1mDegree Load (0.3ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 14)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (1.6ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 14) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mEmployee Load (0.4ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees".person_id = 18) [0m
+  [4;35;1mEmployeeSection Load (0.4ms)[0m   [0mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 8) [0m
+  [4;36;1mSection Load (0.4ms)[0m   [0;1mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;35;1mStudent Load (0.2ms)[0m   [0mSELECT * FROM "students" WHERE ("students".person_id = 15) [0m
+  [4;36;1mEmployee Load (0.5ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees".person_id = 15) [0m
+  [4;35;1mEmployeeSection Load (0.5ms)[0m   [0mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 7) [0m
+  [4;36;1mSection Load (0.3ms)[0m   [0;1mSELECT * FROM "sections" WHERE ("sections"."id" = 11) [0m
+  [4;35;1mEmployeeSection Load (0.5ms)[0m   [0mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 9) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;35;1mSection Load (0.3ms)[0m   [0mSELECT * FROM "sections" WHERE ("sections"."id" = 12) [0m
+  [4;36;1mEmployeeSection Load (0.4ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 12) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;36;1mStudent Load (12.1ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students".person_id = 17) [0m
+  [4;35;1mDegree Load (0.9ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 9)) [0m
+  [4;36;1mProgram Load (0.3ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;35;1mAdvisor Load (0.5ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 17)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;35;1mAdvisor Load (0.5ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 18)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 8) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 20)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (16.3ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 9) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mDegree Load (0.5ms)[0m   [0;1mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 11)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;36;1mAdvisor Load (0.5ms)[0m   [0;1mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 16)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;36;1mCode Load Including Associations (2.7ms)[0m   [0;1mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 11) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;35;1mEmployee Load (0.5ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees".person_id = 17) [0m
+  [4;36;1mEmployeeSection Load (2.1ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 10) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;36;1mStudent Load (0.7ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students".person_id = 16) [0m
+  [4;35;1mDegree Load (0.4ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 8)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 17)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (1.2ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 8) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mDegree Load (0.4ms)[0m   [0;1mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 10)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 16)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;36;1mCode Load Including Associations (1.0ms)[0m   [0;1mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 10) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;35;1mDegree Load (0.2ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 15)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (0.9ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 15) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mEmployee Load (0.2ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees".person_id = 16) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "logs" WHERE ("logs".person_id = 18) [0m
+  [4;36;1mLog Load (1.2ms)[0m   [0;1mSELECT * FROM "logs" WHERE ("logs".person_id = 18) ORDER BY created_at ASC LIMIT 1 OFFSET 0[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSELECT count(DISTINCT "contacts".id) AS count_all FROM "contacts" LEFT OUTER JOIN "contact_types" ON "contact_types".id = "contacts".contact_type_id WHERE ("contacts".person_id = 18) [0m
+  [4;35;1mContact Load Including Associations (7.2ms)[0m   [0mSELECT "contacts"."id" AS t0_r0, "contacts"."person_id" AS t0_r1, "contacts"."contact_type_id" AS t0_r2, "contacts"."body" AS t0_r3, "contacts"."created_at" AS t0_r4, "contacts"."updated_at" AS t0_r5, "contact_types"."id" AS t1_r0, "contact_types"."contact_type_id" AS t1_r1, "contact_types"."name" AS t1_r2, "contact_types"."is_private" AS t1_r3, "contact_types"."created_at" AS t1_r4, "contact_types"."updated_at" AS t1_r5 FROM "contacts" LEFT OUTER JOIN "contact_types" ON "contact_types".id = "contacts".contact_type_id WHERE ("contacts".person_id = 18) ORDER BY contact_types.name ASC LIMIT 2 OFFSET 0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM "employees" WHERE ("employees".person_id = 18) [0m
+  [4;35;1mEmployee Load (1.0ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees".person_id = 18) ORDER BY blurb ASC LIMIT 1 OFFSET 0[0m
+  [4;36;1mEmployee Load (2.8ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 8) LIMIT 1[0m
+  [4;35;1mSQL (15.9ms)[0m   [0mSELECT count(DISTINCT "students".id) AS count_all FROM "students" LEFT OUTER JOIN "statuses" ON "statuses".id = "students".status_id WHERE ("students".person_id = 18) [0m
+  [4;36;1mStudent Load Including Associations (20.5ms)[0m   [0;1mSELECT "students"."id" AS t0_r0, "students"."person_id" AS t0_r1, "students"."program_id" AS t0_r2, "students"."status_id" AS t0_r3, "students"."graduating" AS t0_r4, "students"."graduated" AS t0_r5, "students"."other_degrees" AS t0_r6, "students"."created_at" AS t0_r7, "students"."updated_at" AS t0_r8, "statuses"."id" AS t1_r0, "statuses"."name" AS t1_r1, "statuses"."description" AS t1_r2, "statuses"."created_at" AS t1_r3, "statuses"."updated_at" AS t1_r4 FROM "students" LEFT OUTER JOIN "statuses" ON "statuses".id = "students".status_id WHERE ("students".person_id = 18) ORDER BY statuses.name ASC LIMIT 3 OFFSET 0[0m
+  [4;35;1mStudent Load (59.2ms)[0m   [0mSELECT * FROM "students" WHERE ("students"."id" = 12) LIMIT 1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(DISTINCT "employee_sections".id) AS count_all FROM "employee_sections" LEFT OUTER JOIN "sections" ON "sections".id = "employee_sections".section_id WHERE ("employee_sections".employee_id = 8) [0m
+  [4;35;1mEmployeeSection Load Including Associations (9.0ms)[0m   [0mSELECT "employee_sections"."id" AS t0_r0, "employee_sections"."employee_id" AS t0_r1, "employee_sections"."section_id" AS t0_r2, "employee_sections"."is_advisor" AS t0_r3, "employee_sections"."title" AS t0_r4, "employee_sections"."created_at" AS t0_r5, "employee_sections"."updated_at" AS t0_r6, "sections"."id" AS t1_r0, "sections"."name" AS t1_r1, "sections"."created_at" AS t1_r2, "sections"."updated_at" AS t1_r3 FROM "employee_sections" LEFT OUTER JOIN "sections" ON "sections".id = "employee_sections".section_id WHERE ("employee_sections".employee_id = 8) ORDER BY sections.name ASC LIMIT 1 OFFSET 0[0m
+  [4;36;1mSQL (6.4ms)[0m   [0;1mSELECT count(DISTINCT "student_degrees".id) AS count_all FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id LEFT OUTER JOIN "advisors" ON advisors.student_degree_id = student_degrees.id LEFT OUTER JOIN "employees" ON "employees".id = "advisors".employee_id LEFT OUTER JOIN "people" ON "people".id = "employees".person_id WHERE ("student_degrees".student_id = 12) [0m
+  [4;35;1mStudentDegree Load IDs For Limited Eager Loading (13.1ms)[0m   [0mSELECT DISTINCT "student_degrees".id FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id WHERE ("student_degrees".student_id = 12) ORDER BY degrees.name ASC LIMIT 1 OFFSET 0[0m
+  [4;36;1mStudentDegree Load Including Associations (44.3ms)[0m   [0;1mSELECT "student_degrees"."id" AS t0_r0, "student_degrees"."student_id" AS t0_r1, "student_degrees"."degree_id" AS t0_r2, "student_degrees"."created_at" AS t0_r3, "student_degrees"."updated_at" AS t0_r4, "degrees"."id" AS t1_r0, "degrees"."section_id" AS t1_r1, "degrees"."program_id" AS t1_r2, "degrees"."name" AS t1_r3, "degrees"."created_at" AS t1_r4, "degrees"."updated_at" AS t1_r5, "advisors"."id" AS t2_r0, "advisors"."student_degree_id" AS t2_r1, "advisors"."employee_id" AS t2_r2, "advisors"."start_date" AS t2_r3, "advisors"."end_date" AS t2_r4, "advisors"."created_at" AS t2_r5, "advisors"."updated_at" AS t2_r6, "employees"."id" AS t3_r0, "employees"."person_id" AS t3_r1, "employees"."blurb" AS t3_r2, "employees"."created_at" AS t3_r3, "employees"."updated_at" AS t3_r4, "people"."id" AS t4_r0, "people"."name" AS t4_r1, "people"."created_at" AS t4_r2, "people"."updated_at" AS t4_r3 FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id LEFT OUTER JOIN "advisors" ON advisors.student_degree_id = student_degrees.id LEFT OUTER JOIN "employees" ON "employees".id = "advisors".employee_id LEFT OUTER JOIN "people" ON "people".id = "employees".person_id WHERE ("student_degrees".student_id = 12) AND "student_degrees".id IN (17) ORDER BY degrees.name ASC[0m
+  [4;35;1mStudentDegree Load (0.4ms)[0m   [0mSELECT * FROM "student_degrees" WHERE ("student_degrees"."id" = 17) LIMIT 1[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mSELECT count(DISTINCT "advisors".id) AS count_all FROM "advisors" LEFT OUTER JOIN "employees" ON "employees".id = "advisors".employee_id LEFT OUTER JOIN "people" ON "people".id = "employees".person_id WHERE ("advisors".student_degree_id = 17) [0m
+  [4;35;1mAdvisor Load (1.0ms)[0m   [0mSELECT * FROM "advisors" WHERE ("advisors".student_degree_id = 17) ORDER BY employee_id ASC LIMIT 2 OFFSET 0[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+Completed in 2153ms (View: 3, DB: 245) | 200 OK [http://localhost/people/render_event_response?apotomo_action=event&source=per_person&type=per_person__edit_panel_submit]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:13:30) [GET]
+  Parameters: {"type"=>"rowClick", "id"=>"13", "apotomo_action"=>"event", "bundle"=>"yes", "source"=>"per_student", "_"=>"1247418810552"}
+  [4;36;1mStudent Load (0.8ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students"."id" = '13') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSELECT count(DISTINCT "student_degrees".id) AS count_all FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id LEFT OUTER JOIN "advisors" ON advisors.student_degree_id = student_degrees.id LEFT OUTER JOIN "employees" ON "employees".id = "advisors".employee_id LEFT OUTER JOIN "people" ON "people".id = "employees".person_id WHERE ("student_degrees".student_id = 13) [0m
+  [4;35;1mStudentDegree Load IDs For Limited Eager Loading (0.8ms)[0m   [0mSELECT DISTINCT "student_degrees".id FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id WHERE ("student_degrees".student_id = 13) ORDER BY degrees.name ASC LIMIT 0 OFFSET 0[0m
+Completed in 1716ms (View: 2, DB: 13) | 200 OK [http://localhost/people/render_event_response?apotomo_action=event&source=per_student&type=rowClick&bundle=yes&id=13&_=1247418810552]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:13:32) [POST]
+  Parameters: {"type"=>"openEditPanel", "authenticity_token"=>"RADSrPqfyyi2rRO/KX0LzrQ6TfyoiuXdhI3ep/jAFEI=", "id"=>"13", "apotomo_action"=>"data", "table"=>"per_students_list", "panel"=>"row", "source"=>"per_student"}
+  [4;36;1mStudent Load (0.4ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students"."id" = '13') AND ("students".person_id = 18) LIMIT 1[0m
+Rendered advisors/_setup (2.5ms)
+Rendered student_degrees/_setup (11.3ms)
+  [4;35;1mStatus Load (0.6ms)[0m   [0mSELECT * FROM "statuses" [0m
+Rendered students/_panel (31.4ms)
+Completed in 1743ms (View: 1, DB: 3) | 200 OK [http://localhost/people/render_event_response?apotomo_action=data&source=per_student&type=openEditPanel]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:13:39) [POST]
+  Parameters: {"type"=>"per_student__edit_panel_submit", "authenticity_token"=>"RADSrPqfyyi2rRO/KX0LzrQ6TfyoiuXdhI3ep/jAFEI=", "apotomo_action"=>"event", "source"=>"per_student", "student"=>{"graduating"=>"9987", "other_degrees"=>"ghghg", "graduated"=>"0", "status_id"=>"10"}}
+  [4;36;1mStudent Load (0.4ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students"."id" = 13) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (102.1ms)[0m   [0;1mSELECT count(DISTINCT "students".id) AS count_all FROM "students" LEFT OUTER JOIN "statuses" ON "statuses".id = "students".status_id WHERE ("students".person_id = 18) [0m
+  [4;35;1mStudent Load Including Associations (5.7ms)[0m   [0mSELECT "students"."id" AS t0_r0, "students"."person_id" AS t0_r1, "students"."program_id" AS t0_r2, "students"."status_id" AS t0_r3, "students"."graduating" AS t0_r4, "students"."graduated" AS t0_r5, "students"."other_degrees" AS t0_r6, "students"."created_at" AS t0_r7, "students"."updated_at" AS t0_r8, "statuses"."id" AS t1_r0, "statuses"."name" AS t1_r1, "statuses"."description" AS t1_r2, "statuses"."created_at" AS t1_r3, "statuses"."updated_at" AS t1_r4 FROM "students" LEFT OUTER JOIN "statuses" ON "statuses".id = "students".status_id WHERE ("students".person_id = 18) ORDER BY statuses.name ASC LIMIT 3 OFFSET 0[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSELECT count(DISTINCT "student_degrees".id) AS count_all FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id LEFT OUTER JOIN "advisors" ON advisors.student_degree_id = student_degrees.id LEFT OUTER JOIN "employees" ON "employees".id = "advisors".employee_id LEFT OUTER JOIN "people" ON "people".id = "employees".person_id WHERE ("student_degrees".student_id = 13) [0m
+  [4;35;1mStudentDegree Load IDs For Limited Eager Loading (1.0ms)[0m   [0mSELECT DISTINCT "student_degrees".id FROM "student_degrees" LEFT OUTER JOIN "degrees" ON "degrees".id = "student_degrees".degree_id WHERE ("student_degrees".student_id = 13) ORDER BY degrees.name ASC LIMIT 0 OFFSET 0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "people" [0m
+  [4;35;1mPerson Load (2.5ms)[0m   [0mSELECT * FROM "people" ORDER BY name ASC LIMIT 4 OFFSET 0[0m
+  [4;36;1mStudent Load (1.0ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students".person_id = 18) [0m
+  [4;35;1mDegree Load (0.4ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 12)) [0m
+  [4;36;1mProgram Load (15.5ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 8) [0m
+  [4;35;1mAdvisor Load (0.8ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 20)) [0m
+  [4;36;1mEmployee Load (0.6ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mPerson Load (0.3ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mStatus Load (0.5ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (19.5ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 12) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mDegree Load (0.3ms)[0m   [0;1mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 13)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;36;1mCode Load Including Associations (0.8ms)[0m   [0;1mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 13) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;35;1mDegree Load (0.2ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 14)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (3.7ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 14) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mEmployee Load (0.4ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees".person_id = 18) [0m
+  [4;35;1mEmployeeSection Load (1.3ms)[0m   [0mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 8) [0m
+  [4;36;1mSection Load (0.3ms)[0m   [0;1mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;35;1mStudent Load (0.2ms)[0m   [0mSELECT * FROM "students" WHERE ("students".person_id = 15) [0m
+  [4;36;1mEmployee Load (0.4ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees".person_id = 15) [0m
+  [4;35;1mEmployeeSection Load (0.5ms)[0m   [0mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 7) [0m
+  [4;36;1mSection Load (0.3ms)[0m   [0;1mSELECT * FROM "sections" WHERE ("sections"."id" = 11) [0m
+  [4;35;1mEmployeeSection Load (0.4ms)[0m   [0mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 9) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;35;1mSection Load (0.4ms)[0m   [0mSELECT * FROM "sections" WHERE ("sections"."id" = 12) [0m
+  [4;36;1mEmployeeSection Load (0.3ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 12) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;36;1mStudent Load (14.4ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students".person_id = 17) [0m
+  [4;35;1mDegree Load (3.6ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 9)) [0m
+  [4;36;1mProgram Load (0.3ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;35;1mAdvisor Load (0.5ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 17)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;35;1mAdvisor Load (0.4ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 18)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 8) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 20)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (3.3ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 9) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mDegree Load (0.8ms)[0m   [0;1mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 11)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;36;1mAdvisor Load (0.4ms)[0m   [0;1mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 16)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;36;1mCode Load Including Associations (1.2ms)[0m   [0;1mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 11) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;35;1mEmployee Load (0.3ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees".person_id = 17) [0m
+  [4;36;1mEmployeeSection Load (0.3ms)[0m   [0;1mSELECT * FROM "employee_sections" WHERE ("employee_sections".employee_id = 10) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "sections" WHERE ("sections"."id" = 10) [0m
+  [4;36;1mStudent Load (9.6ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students".person_id = 16) [0m
+  [4;35;1mDegree Load (0.4ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 8)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 17)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (1.7ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 8) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mDegree Load (0.4ms)[0m   [0;1mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 10)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "programs" WHERE ("programs"."id" = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT "advisors".* FROM "advisors" INNER JOIN "student_degrees" ON "advisors".student_degree_id = "student_degrees".id WHERE (("student_degrees".degree_id = 16)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 15) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;36;1mCode Load Including Associations (1.0ms)[0m   [0;1mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 10) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;35;1mDegree Load (0.2ms)[0m   [0mSELECT "degrees".* FROM "degrees" INNER JOIN "student_degrees" ON "degrees".id = "student_degrees".degree_id WHERE (("student_degrees".student_id = 15)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses"."id" = 10) [0m
+  [4;35;1mCode Load Including Associations (0.8ms)[0m   [0mSELECT "codes"."id" AS t0_r0, "codes"."student_id" AS t0_r1, "codes"."semester_id" AS t0_r2, "codes"."code" AS t0_r3, "codes"."provided" AS t0_r4, "codes"."created_at" AS t0_r5, "codes"."updated_at" AS t0_r6, "semesters"."id" AS t1_r0, "semesters"."start_date" AS t1_r1, "semesters"."public" AS t1_r2, "semesters"."created_at" AS t1_r3, "semesters"."updated_at" AS t1_r4 FROM "codes" LEFT OUTER JOIN "semesters" ON "semesters".id = "codes".semester_id WHERE ("codes"."student_id" = 15) ORDER BY semesters.start_date DESC LIMIT 1[0m
+  [4;36;1mEmployee Load (0.2ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees".person_id = 16) [0m
+Completed in 2024ms (View: 2, DB: 204) | 200 OK [http://localhost/people/render_event_response?apotomo_action=event&source=per_student&type=per_student__edit_panel_submit]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:21:44) [GET]
+  Parameters: {"type"=>"rowClick", "id"=>"15", "apotomo_action"=>"event", "bundle"=>"yes", "source"=>"per_person", "_"=>"1247419304273"}
+  [4;35;1mPerson Load (0.5ms)[0m   [0mSELECT * FROM "people" WHERE ("people"."id" = '15') LIMIT 1[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM "logs" WHERE ("logs".person_id = 15) [0m
+  [4;35;1mLog Load (55.9ms)[0m   [0mSELECT * FROM "logs" WHERE ("logs".person_id = 15) ORDER BY created_at ASC LIMIT 2 OFFSET 0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (103.8ms)[0m   [0mSELECT count(DISTINCT "contacts".id) AS count_all FROM "contacts" LEFT OUTER JOIN "contact_types" ON "contact_types".id = "contacts".contact_type_id WHERE ("contacts".person_id = 15) [0m
+  [4;36;1mContact Load Including Associations (12.0ms)[0m   [0;1mSELECT "contacts"."id" AS t0_r0, "contacts"."person_id" AS t0_r1, "contacts"."contact_type_id" AS t0_r2, "contacts"."body" AS t0_r3, "contacts"."created_at" AS t0_r4, "contacts"."updated_at" AS t0_r5, "contact_types"."id" AS t1_r0, "contact_types"."contact_type_id" AS t1_r1, "contact_types"."name" AS t1_r2, "contact_types"."is_private" AS t1_r3, "contact_types"."created_at" AS t1_r4, "contact_types"."updated_at" AS t1_r5 FROM "contacts" LEFT OUTER JOIN "contact_types" ON "contact_types".id = "contacts".contact_type_id WHERE ("contacts".person_id = 15) ORDER BY contact_types.name ASC LIMIT 6 OFFSET 0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "employees" WHERE ("employees".person_id = 15) [0m
+  [4;36;1mEmployee Load (1.2ms)[0m   [0;1mSELECT * FROM "employees" WHERE ("employees".person_id = 15) ORDER BY blurb ASC LIMIT 3 OFFSET 0[0m
+  [4;35;1mEmployee Load (0.4ms)[0m   [0mSELECT * FROM "employees" WHERE ("employees"."id" = 7) LIMIT 1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(DISTINCT "students".id) AS count_all FROM "students" LEFT OUTER JOIN "statuses" ON "statuses".id = "students".status_id WHERE ("students".person_id = 15) [0m
+  [4;35;1mStudent Load Including Associations (24.2ms)[0m   [0mSELECT "students"."id" AS t0_r0, "students"."person_id" AS t0_r1, "students"."program_id" AS t0_r2, "students"."status_id" AS t0_r3, "students"."graduating" AS t0_r4, "students"."graduated" AS t0_r5, "students"."other_degrees" AS t0_r6, "students"."created_at" AS t0_r7, "students"."updated_at" AS t0_r8, "statuses"."id" AS t1_r0, "statuses"."name" AS t1_r1, "statuses"."description" AS t1_r2, "statuses"."created_at" AS t1_r3, "statuses"."updated_at" AS t1_r4 FROM "students" LEFT OUTER JOIN "statuses" ON "statuses".id = "students".status_id WHERE ("students".person_id = 15) ORDER BY statuses.name ASC LIMIT 0 OFFSET 0[0m
+  [4;36;1mSQL (43.1ms)[0m   [0;1mSELECT count(DISTINCT "employee_sections".id) AS count_all FROM "employee_sections" LEFT OUTER JOIN "sections" ON "sections".id = "employee_sections".section_id WHERE ("employee_sections".employee_id = 7) [0m
+  [4;35;1mEmployeeSection Load Including Associations (1.1ms)[0m   [0mSELECT "employee_sections"."id" AS t0_r0, "employee_sections"."employee_id" AS t0_r1, "employee_sections"."section_id" AS t0_r2, "employee_sections"."is_advisor" AS t0_r3, "employee_sections"."title" AS t0_r4, "employee_sections"."created_at" AS t0_r5, "employee_sections"."updated_at" AS t0_r6, "sections"."id" AS t1_r0, "sections"."name" AS t1_r1, "sections"."created_at" AS t1_r2, "sections"."updated_at" AS t1_r3 FROM "employee_sections" LEFT OUTER JOIN "sections" ON "sections".id = "employee_sections".section_id WHERE ("employee_sections".employee_id = 7) ORDER BY sections.name ASC LIMIT 1 OFFSET 0[0m
+Completed in 2466ms (View: 2, DB: 254) | 200 OK [http://localhost/people/render_event_response?apotomo_action=event&source=per_person&type=rowClick&bundle=yes&id=15&_=1247419304273]
+
+
+Processing PeopleController#render_event_response (for 127.0.0.1 at 2009-07-12 13:21:47) [POST]
+  Parameters: {"type"=>"openEditPanel", "authenticity_token"=>"RADSrPqfyyi2rRO/KX0LzrQ6TfyoiuXdhI3ep/jAFEI=", "id"=>"15", "apotomo_action"=>"data", "table"=>"per_people_list", "panel"=>"0", "source"=>"per_person"}
+  [4;36;1mPerson Load (0.3ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = '15') LIMIT 1[0m
+Rendered logs/_setup (16.9ms)
+Rendered contacts/_setup (8.0ms)
+Rendered employee_sections/_setup (72.5ms)
+Rendered employees/_setup (45.3ms)
+Rendered advisors/_setup (2.9ms)
+Rendered student_degrees/_setup (18.8ms)
+Rendered students/_setup (203.3ms)
+Rendered people/_panel (11.2ms)
+Completed in 2457ms (View: 2, DB: 172) | 200 OK [http://localhost/people/render_event_response?apotomo_action=data&source=per_person&type=openEditPanel]
