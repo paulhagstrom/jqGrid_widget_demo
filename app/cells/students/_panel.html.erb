@@ -1,0 +1,30 @@
+<div class="fancytable_edit_panel">
+	<%= form_to_event :state => :_edit_panel_submit %>
+		<table class="layout_table">
+			<tr>
+				<td>Other degrees</td>
+				<td><%= text_field_tag 'student[other_degrees]', @record.other_degrees, :size => 15 %></td>
+			</tr>
+			<tr>
+				<td>Status</td>
+				<td><%= select_tag('student[status_id]',
+				options_for_select(Status.find(:all).collect{|c| [c.name, c.id]}, @record.status_id)) %></td>
+			</tr>
+			<tr>
+				<td>Graduating</td>
+				<td><%= text_field_tag 'student[graduating]', @record.graduating, :size => 15 %></td>
+			</tr>
+			<tr>
+				<td>Graduated</td>
+				<td><input name='student[graduated]' type='hidden' value='0' />
+				<%= check_box_tag 'student[graduated]', '1', (@record.graduated ? true : false) -%></td>
+			</tr>
+			<tr>
+				<td>
+					<%= submit_tag @record.new_record? ? "Add" : "Update" %><br />
+					<%= cancel_button %>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

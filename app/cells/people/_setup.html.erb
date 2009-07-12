@@ -1,0 +1,27 @@
+<%= html_filters %>
+<!-- Live search isn't ready yet, it's not targeting the right things -->
+<%#= html_live_search_to_wire('people_list', 'Search:') %>
+<table class="layout_table">
+	<tr>
+		<td valign="top">
+			<%= html_table_to_wire %>
+		</td>
+		<td valign="top">
+			<%= @rendered_children["#{@prefix}student"] %>
+			<%= @rendered_children["#{@prefix}employee"] %>
+		</td>
+		<td valign="top">
+			<%= @rendered_children["#{@prefix}contact"] %>
+			<%= @rendered_children["#{@prefix}log"] %>
+		</td>
+	</tr>
+</table>
+<%#= wire_live_search %>
+<%= wire_jqgrid({
+	:caption => 'People',
+	:height => 350,
+	# :enable_panel => 'title',
+	:pager => {:rows => 2, :rows_options => '2,5,2500'},
+	:sortname => 'name'
+}) %>
+<%= wire_filters %>

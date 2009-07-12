@@ -1,0 +1,48 @@
+<div class="fancytable_edit_panel">
+	<% for @student in @students %>
+		<% form_for :student, @student, :url => { :action => "student_submit" }, :html => {:id => 'student_form'} do |f| %>
+		<table>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td>Graduating:</td>
+							<td><%= f.text_field :graduating %></td>
+						</tr>
+						<tr>
+							<td>Graduated:</td>
+							<td><%= f.check_box :graduated %></td>
+						</tr>
+						<tr>
+							<td>Status:</td>
+							<td><%= select_tag :status_id, options_for_select(['unset', 0] + Status.all.collect {|s| [s.name, s.id]},
+							 @student.status_id) %></td>
+						</tr>
+						<tr>
+							<td>Other degrees:</td>
+							<td><%= f.text_field :other_degrees %></td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					
+				</td>
+				<td>
+					<%= submit_tag 'Submit', :id => 'student_submit' %>
+				</td>
+			</tr>
+		</table>
+		<% end %>
+	<% end %>
+</div>
+<script type="text/javascript">
+jQuery('#student_submit').bind("click", function(e) {
+	var panelId = jQuery(this).closest('.open_edit_panel').attr('id');
+	var options = {
+		target: '#' + panelId,
+		url: '/people/student_submit/<%= @student.id %>?authenticity_token=' + encodeURIComponent(rails_authenticity_token),
+	}
+	jQuery(this).closest('form').ajaxSubmit(options);
+	return false;
+})
+</script> 

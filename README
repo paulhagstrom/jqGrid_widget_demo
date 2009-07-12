@@ -1,0 +1,9 @@
+To make this go
+
+git clone whatever-the-url-is
+cd whatever
+git submodule init
+git submodule update
+# Actually, never mind, it's part of the migrate now
+# rake db:sessions:create
+rake db:migrate

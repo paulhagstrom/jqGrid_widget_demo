@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  employee_id: 1
+  section_id: 1
+  is_advisor: false
+
+two:
+  employee_id: 1
+  section_id: 1
+  is_advisor: false

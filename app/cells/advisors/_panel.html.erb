@@ -1,0 +1,26 @@
+<div class="fancytable_edit_panel">
+	<%= form_to_event :state => :_edit_panel_submit %>
+		<table class="layout_table">
+			<tr>
+				<td>Advisor</td>
+				<td><%= select_tag('advisor[employee_id]',
+				options_for_select(EmployeeSection.find(:all, :include => {:employee => :person},
+					:conditions => {:is_advisor => true}).map{|c| [c.employee.person.name, c.employee.id]}, @record.employee_id)) %></td>
+			</tr>
+			<tr>
+				<td>Start date</td>
+				<td><%= text_field_tag 'advisor[start_date]', @record.start_date, :size => 15 %></td>
+			</tr>
+			<tr>
+				<td>End date</td>
+				<td><%= text_field_tag 'advisor[end_date]', @record.end_date, :size => 15 %></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<%= submit_tag @record.new_record? ? "Add" : "Update" %> 
+					<%= cancel_button %>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

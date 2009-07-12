@@ -1,0 +1,36 @@
+<div class="fancytable_edit_panel">
+	<%= form_to_event :state => :_edit_panel_submit %>
+		<table class="layout_table">
+			<tr>
+				<td>
+					<table class="layout_table">
+						<tr>
+							<td>Name</td>
+							<td><%= text_field_tag 'person[name]', @record.name, :size => 15 %></td>
+						</tr>
+						<tr>
+							<td>(field)</td>
+							<td>(edit field here)</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table class="layout_table">
+						<tr>
+							<td>(NAME)</td>
+							<td>(edit field here)</td>
+						</tr>
+						<tr>
+							<td>(field)</td>
+							<td>(edit field here)</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<%= submit_tag @record.new_record? ? "Add" : "Update" %><br />
+					<%= cancel_button %>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

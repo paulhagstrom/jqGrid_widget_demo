@@ -1,0 +1,17 @@
+<table class="layout_table">
+	<tr>
+		<td valign="top">
+			<%= html_table_to_wire %>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<%= @rendered_children["#{@prefix}employee_section"] %>
+		</td>
+	</tr>
+</table>
+<%= wire_jqgrid({
+	:caption => 'Profiles',
+	:height => 50,
+	:enable_panel => 'title'
+}) %>

@@ -1,0 +1,6 @@
+<% if opts[:enable_cell_panel] %>
+  onCellSelect: function(rowid,cellindex,html,target) {
+    <%= (opts[:enable_cell_panel] == 'row') ? 'openRowPanel' : 'openTitlePanel' -%>
+	(rowid,cellindex,html,target,'<%= url_for(address_to_event({:type => :openEditPanel, :escape => false}, :data)) %>');
+  },
+<% end %>

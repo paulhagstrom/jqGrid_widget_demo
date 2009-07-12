@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  student_id: 1
+  program_id: 1
+  graduating: 1
+  graduated: false
+
+two:
+  student_id: 1
+  program_id: 1
+  graduating: 1
+  graduated: false

@@ -1,0 +1,37 @@
+<%
+  opts[:pager] ||= false
+  opts[:pager_id] ||= @jqgrid_id + '_pager'
+  opts[:height] ||= 150
+  opts[:enable_panel] ||= false
+  opts[:enable_cell_panel] ||= false
+  opts[:collapsed] ||= false #(options[:collapsed] != false) instead to make it default to true
+  opts[:url] ||= url_for(address_to_event({:state => '_send_rows', :escape => false}, :data))
+  opts[:caption] ||= 'Records'
+  opts[:initial_sort] ||= 'name'
+-%>
+<% unless @is_top_widget == 'yes' %>
+<%= render :partial => 'jqgrid_widget/push_empty_dataset', :locals => {:jqgrid_id => jqgrid_id} %>
+<% end %>
+  jQuery("#<%= jqgrid_id %>").jqGrid({
+    datatype: function(pdata) { retrieveJSON('#<%= jqgrid_id %>','#{opts[:url]}',pdata); },
+    height: <%= opts[:height] %>,
+    viewrecords: true,
+    pager: jQuery('#<%= opts[:pager_id] %>'),
+    sortname: '<%= opts[:initial_sort] %>',
+    loadui: 'block',
+    hiddengrid: <%= opts[:collapsed] ? 'true' : 'false' %>,
+	<%= render :partial => 'jqgrid_widget/columns', :locals => {:columns => columns} %>
+	<%= render :partial => 'jqgrid_widget/pager', :locals => {:opts => opts} %>
+	<%= render :partial => 'jqgrid_widget/cell_select', :locals => {:mode => :edit, :opts => opts} %>
+	<%= render :partial => 'jqgrid_widget/row_select', :locals => {:mode => :edit, :opts => opts} %>
+	<%= render :partial => 'jqgrid_widget/load_complete', :locals => {:opts => opts} %>
+    sortorder: "asc",
+    viewsortable: true,
+    //toolbar: [true,'top'],
+    //loadonce: true,
+    caption: "<%= opts[:caption] %>"
+  }).navGrid('#<%= opts[:pager_id] %>', {edit:false,add:false,del:true,search:false,refresh:false})
+  #{wire_jqgrid_add_button(opts)}
+  ;
+  // make the whole titlebar expland and collapse the table
+  activateTitleBar('#<%= jqgrid_id %>');

@@ -1,0 +1,17 @@
+<div class="fancytable_edit_panel">
+	<%= form_to_event :state => :_edit_panel_submit %>
+		<table class="layout_table">
+			<tr>
+				<td>Degree</td>
+				<td><%= select_tag('student_degree[degree_id]',
+				options_for_select(Degree.find(:all).collect{|c| [c.name, c.id]}, @record.degree_id)) %></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<%= submit_tag @record.new_record? ? "Add" : "Update" %> 
+					<%= cancel_button %>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

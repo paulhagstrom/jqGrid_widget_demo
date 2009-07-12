@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  student_id: 1
+  employee_id: 1
+  start_date: 2009-06-26
+  end_date: 2009-06-26
+
+two:
+  student_id: 1
+  employee_id: 1
+  start_date: 2009-06-26
+  end_date: 2009-06-26

@@ -1,0 +1,10 @@
+<%
+  col_names = (columns.map {|c| "#{c[:label]}"}).join(',')
+  col_model = (columns.map {|c|
+    '{' + ((c.keys - [:custom, :field]).map {|k|
+      "#{k.to_s}:#{c[k]}"
+      }).join(',') + '}'
+    }).join(',')
+-%>
+colNames:[<%= col_names %>],
+colModel:[<%= col_model %>],

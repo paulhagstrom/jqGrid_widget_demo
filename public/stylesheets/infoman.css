@@ -1,0 +1,1057 @@
+/* This is based on the infomanage system. */
+/* For a sense of familiarity */
+
+body {
+	background-color: #FFFFFF;
+	color: #000000;
+}
+
+/* Overall page default font selection */
+body, p, ol, ul, td {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height: auto;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Progress indicator on lists */
+
+div.progress_list {
+	position: absolute;
+	top: 45%;
+	left: 45%;
+	background-color: #CCCC88;
+	/* these are four ways to do transparency, to cover all browser bases */
+	filter:alpha(opacity=85);
+	-moz-opacity:0.85;
+	-khtml-opacity: 0.85;
+	opacity: 0.85;
+}
+
+/* The list container has to be relative so that the progress indicator is positioned within it */
+
+div.list_container {
+	position: relative;
+}
+
+/* News */
+/* item headers */
+/* Something seems to be adding padding to my tables, I'm not quite sure what. */
+
+/* News titles */
+table.item_heading h2 {
+	color:#880000;
+	font-size:14px;
+	text-align:center;
+}
+table.item_heading {
+	width: 100%;
+	border: 0px;
+}
+table.item_heading td {
+	vertical-align: top;
+	margin: 0px;
+	padding: 0px;
+	background-color:#CCFFCC;
+}
+table.item_heading td.news_byline {
+	vertical-align: middle;
+	width: 150px;
+	background-color: #CCCCCC;
+	margin: 0px;
+	padding: 0px;
+}
+td.news_byline p {
+	font-size:12px;
+	text-align:center;
+	margin: 0px;
+	padding: 0px;
+}
+p.item_content {
+	padding: 5px;
+	margin: 5px;
+	border: thin dotted black;
+}
+
+/* Pagination */
+/* pagination is flickr pagination from will_paginate */
+.pagination {
+	text-align: right;
+	padding: .3em;
+}
+.pagination a, .pagination span {
+	padding: .2em .5em;
+}
+.pagination span.disabled {
+	color: #AAA;
+}
+.pagination span.current {
+	font-weight: bold;
+	color: #FF0084;
+}
+.pagination a {
+	border: 1px solid #DDDDDD;
+	color: #0063DC;
+	text-decoration: none;
+}
+.pagination a:hover, .pagination a:focus {
+	border-color: #003366;
+	background: #0063DC;
+	color: white;
+}
+.pagination .page_info {
+	color: #aaa;
+	padding-top: .8em;
+}
+.pagination .prev_page, .pagination .next_page {
+	border-width: 2px;
+}
+/* I disabled these because they only apply when the next/prev are disabled, and cause them to move
+.pagination .prev_page {
+	margin-right: 1em;
+}
+.pagination .next_page {
+	margin-left: 1em;
+}
+*/
+.record_count {
+    font-weight: bold;
+	color: black;
+	padding: .2em .5em;
+	width: 120px;
+}
+.new_link {
+    font-weight: bold;
+    color: #0063DC;
+	text-align: right;
+}
+.new_link a:hover {
+    color: #FFFFCC;
+    background-color: #00FF00;
+    border-color: #008800;
+}
+.new_link a {
+	text-decoration: none;
+	padding: .2em .5em;
+	color: #0063DC;
+	border: 1px solid #DDDDDD;
+}
+
+/* Popup edit windows */
+
+div.edit_window {
+	position:fixed;
+	top:5px;
+	left:10px;
+	z-index:10;
+	background-color:#CCCCCC;
+	border: medium solid blue;
+	/* these are four ways to do transparency, to cover all browser bases */
+	filter:alpha(opacity=85);
+	-moz-opacity:0.85;
+	-khtml-opacity: 0.85;
+	opacity: 0.85;
+	padding: 5px;
+}
+
+div.edit_small {
+	width: 400px;
+}
+
+div.edit_medium {
+	width: 700px;
+}
+
+div.edit_wide {
+	width: 900px;
+}
+
+/* Popup message windows */
+/* obsolete
+div.message_window {
+	position:fixed;
+	left: -10px;
+	top: 0px;
+	width:100px;
+	z-index:20;
+	background-color:#FFEEEE;
+	border: medium solid blue;
+	filter:alpha(opacity=85);
+	-moz-opacity:0.85;
+	-khtml-opacity: 0.85;
+	opacity: 0.85;
+}
+
+tr.message_row td {
+	background-color: #FFEEEE;
+	color:black;
+	font-size: 20pt;
+}
+
+div.message_arrow {
+	z-index: 20;
+	background-color: #FFEEEE;
+	color:black;
+	font-size: 12pt;
+}
+*/
+
+.flash_title {
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #FFCCCC;
+	color:black;
+	font-weight: normal;
+	width: 500px;
+	text-align:center;
+}
+
+.flash_notice {
+	background-color: #CCFFCC;
+	color:black;
+	width: 200px;
+}
+
+
+.alert {
+	color: red;
+	font-weight: bold;
+}
+/* Styles for the outer navigation layout */
+/* At the top is a banner, formed in a table with two horizontal cells */
+/* Left cell is nav_title, right cell is nav_user */
+
+td.nav_title {
+	background-color : #981A21;
+	vertical-align: middle;
+	padding: 5px 5px;
+	font-weight : bold;
+	font-style: italic;
+	text-align: left;
+	color: #FFFF88;	
+	}
+td.nav_user {
+	background-color : #FFCC00;
+	vertical-align: middle;
+	width: 150px;
+	padding: 5px 0px;
+	font-size : 10px;
+	font-weight : bold;
+	text-align: center;
+	color : #FF0000;	
+	}
+
+/* The content part of the page is in a table. */
+/* First column is the navigation bar, second column is the content */
+/* For a three-column layout, the content part of the page can include </td><td> to start col 3 */
+
+/* nav_bar is the overall navigation column */
+/* It contains a table, block headers nav_block rows */
+
+td.nav_bar {
+	background-color : #CCFFCC;
+	width:125px;
+	vertical-align: top;
+}
+
+tr.nav_block > td {
+	background-color : #FFCC00;
+	text-align: right;
+	padding: 3px;
+	color : #884400;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : bold;
+}
+tr.nav_block a:link, tr.nav_block a:visited {
+	background-color : transparent;
+	color : #FFFF00;
+	text-decoration : none;
+}
+tr.nav_block a:hover {
+	background-color : transparent;
+	color : #EEEEFF;
+	text-decoration : none;
+}
+/* nav_block_on is the active grouping header in the navigation bar (block) */
+tr.nav_block_on {
+	background-color : #993300;
+	text-align: right;
+	padding: 3px;
+	color : #FFFF00;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : bold;
+}
+tr.nav_block_on a:link, tr.nav_block_on a:visited {
+	background-color : transparent;
+	color : #993300;
+	text-decoration : none;
+}
+tr.nav_block_on a:hover {
+	background-color : transparent;
+	color : #003399;
+	text-decoration : none;
+}
+
+/* nav_items contain the actual links in the navigation bar (module) */
+
+tr.nav_items p {
+	background-color : transparent;
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : bold;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: left;
+}
+tr.nav_items a:link, tr.nav_items a:visited {
+	background-color : transparent;
+	color : #000000;
+	text-decoration : none;
+}
+tr.nav_items a:hover {
+	background-color : transparent;
+	color : #FF0000;
+	text-decoration : none;
+}
+
+/* nav_item_out is the actual link in the navigation bar, to new window */
+
+tr.nav_items p.nav_item_out {
+	background-color : transparent;
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : bold;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: left;
+}
+tr.nav_items p.nav_item_out a:link,p.nav_item_out a:visited {
+	background-color : transparent;
+	color : #000000;
+	text-decoration : none;
+}
+tr.nav_items p.nav_item_out a:hover {
+	background-color : transparent;
+	color : #008800;
+	text-decoration : none;
+}
+
+/* nav_item_on is the currently active navigation bar link */
+
+tr.nav_items p.nav_item_on {
+	background-color : #FFFF00;
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : bold;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: left;
+}
+tr.nav_items p.nav_item_on a:link,p.nav_item_on a:visited {
+	background-color : transparent;
+	color : #000000;
+	text-decoration : none;
+}
+tr.nav_items p.nav_item_on a:hover {
+	background-color : transparent;
+	color : #FF0000;
+	text-decoration : none;
+}
+
+/* nav_status is the style for the status and timer information below navbar */
+
+tr.nav_status p {
+	background-color : transparent;
+	text-align: right;
+	color : #AAAAAA;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 9px;
+}
+
+/* the right bar has the DIVs that hold various right-hand information */
+/* currently displayed only on the top screen */
+
+td.right_bar {
+	background-color : #E8E8E8;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	padding : 5px;
+	width: 200px;
+	vertical-align: top;
+}
+div.right_bar_block {
+	border: 1px dotted black;
+	background-color : #E8E8E8;
+	padding : 5px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	width: 175px;
+	vertical-align: top;
+	font-size: 12px;
+}
+
+/* main is the style of the content block if no other styles supersede */
+
+td.main h1 {
+	background-color : #BBBBEE;
+	text-align: center;
+	color : #000000;
+	margin: 0px;
+	padding: 2px;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 16px;
+	font-weight : bold;
+}
+
+/* Below are definitions for list and editing pages */
+/* These are restarted for caslx */
+
+/* Help text */
+div.explanation {
+	border:	1px dotted black;
+	background-color: #E8E8E8;
+	padding: 5px;
+	margin: 0px 0px 5px 0px;
+}
+
+/* Table for data presentation */
+
+table.data {
+	margin-left: auto;
+	margin-right: auto;
+}
+table.data th {
+	background-color: #FFCC88;
+	text-align: center;
+	color : #330000;
+	font-size : 10px;
+}
+table.data td {
+	background-color: #E8E8E8;
+}
+
+.main_buttons {
+	background-color: #FFFF00;
+	padding: 5px;
+	text-align: center;
+}
+
+/* Classes for cells on data input forms */
+
+.sub_edit {
+	background-color: #888888;
+	padding: 8px;
+}
+.cascade_result {
+	background-color: #AACCAA;
+}
+.data_form_field {
+	color : #000080;
+	font-family : Monaco, Courier, monospace;
+	font-size : 10px;
+}
+
+.data_form_field input, select, textarea {
+	color : #800000;
+	font-family : Monaco, Courier, monospace;
+	font-size : 10px;
+}
+
+.data_form_label {
+	text-align: left;
+	vertical-align : top;
+	background-color : #EEEEFF;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : #000000;
+}
+
+/* Below are definitions for fields, lists, and forms */
+/* These are still mostly legacy definitions from infomanage */
+
+/* pagenavclass is the class for the "Pages: 1 2 [All]" section of generic list */
+
+td.pagenavclass {
+	background-color : #BBBBEE;
+	text-align: right;
+}
+
+td.pagenavclass p {
+	color : #CC3333;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	font-weight : bold;
+}
+
+/* pageinstruc is the class for the page help text on generic list, edit, del */
+
+td.pageinstruc {
+	background-color : #EEEEFF;
+	text-align: left;
+}
+
+td.pageinstruc p {
+	color : #880000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+/* dbsortclass is the class for the filter selector on generic list - OBSOLETE */
+
+td.dbsortclass {
+	background-color : #DDDDDD;
+	text-align: center;
+}
+
+td.dbsortclass p {
+	color : #CC3333;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+/* dbnavclass is the class for the subsection selector borders on generic list */
+
+table.dbnavclass {
+	background-color : #BBBBEE;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+table.dbnavclass p {
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	text-align: right;
+}
+
+/* dbnavsel is the class for the selected subsection on generic list, by default */
+
+td.tab_on {
+	background-color : #EEEEEE;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid red;
+}
+
+td.tab_on p {
+	color : #CC3333;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	text-align: center;
+}
+
+/* dbnavunsel is the class for unselected subsections on generic list, by default */
+
+td.tab {
+	background-color : #CCCCCC;
+	text-align: center;
+	border-top: 1px dotted black;
+	border-left: 1px dotted black;
+	border-right: 1px dotted black;
+	border-bottom: 1px dotted black;
+}
+
+td.tab p {
+	color : #CC3333;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	text-align: center;
+}
+
+/* filterclass is the class for the filter selector on generic list */
+
+table.filterclass {
+	background-color : #FFCCCC;
+	text-align: center;
+}
+
+table.filterclass p {
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+/* filtersel is the class for the selected filter on generic list, by default */
+
+td.filter_on {
+	background-color: #33FF33;
+	text-align: center;
+	width: 100px;
+}
+td.filter_on p {
+	text-align: center;
+}
+td.filter_on p a:link {
+	text-decoration:none;
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight: bold;
+}
+
+/* filterunsel is the class for unselected filters on generic list, by default */
+
+td.filter {
+	background-color : #CCFFCC;
+	text-align: center;
+	border: 1px solid #BBBBBB;
+	width: 100px;
+}
+td.filter p {
+	text-align: center;
+}
+td.filter p a:link {
+	text-decoration:none;
+	color : #666666;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight: bold;
+}
+td.filter p a:hover {
+    color: red; 
+}
+
+/* filter_empty is the class for cells in a filter table that are empty */
+td.filter_empty {
+	background-color : #88AA88;
+	border: 1px solid #BBBBBB;
+	width: 100px;
+}
+
+/* filterclass is the class for the filter group selector on generic list */
+
+table.filtergroupclass {
+	background-color : #CCCCFF;
+	text-align: center;
+}
+
+table.filtergroupclass p {
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+/* filtersel is the class for the selected filter group on generic list, by default */
+
+td.filtergroup_on {
+	background-color : #EEEEEE;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid red;
+}
+
+td.filtergroup_on p {
+	color : #3333CC;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	text-align: center;
+}
+
+/* filterunsel is the class for unselected filter group on generic list, by default */
+
+td.filtergroup {
+	background-color : #CCCCFF;
+	text-align: center;
+	border-top: 1px dotted black;
+	border-left: 1px dotted black;
+	border-right: 1px dotted black;
+	border-bottom: 1px dotted black;
+}
+
+td.filtergroup p {
+	color : #3333CC;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	text-align: center;
+}
+
+/* tablehead is the class for the header row on generic list, by default */
+
+td.tablehead {
+	background-color : #FFCC88;
+	text-align: center;
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+td.tablehead p {
+	color : #330000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+/* Define the coloring for data tables */
+
+table.data tr.odd_row > td.odd_col {
+	background-color : #FFFFFF;
+}
+
+table.data tr.odd_row > td.even_col {
+	background-color : #DDDDDD;
+}
+
+table.data tr.even_row > td.odd_col {
+	background-color : #CCFFCC;
+}
+
+table.data tr.even_row > td.even_col {
+	background-color : #AADDAA;
+}
+
+table.data tr.odd_row > td.edit_link {
+	background-color : #CCCCFF;
+}
+
+table.data tr.even_row > td.edit_link {
+	background-color : #AAAADD;
+}
+
+table.data tr.odd_row > td.del_link {
+	background-color : #FFCCCC;
+}
+
+table.data tr.even_row > td.del_link {
+	background-color : #DDAAAA;
+}
+
+td.del_link > a:hover {
+	background-color : #FF0000;
+	color: #FFFF00;
+}
+
+td.edit_link > a:hover {
+	background-color : #0000FF;
+	color: #FFFF00;
+}
+
+table.data tr td {
+	text-align: left;
+	vertical-align : top;
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+/* This works, but I don't know that I want it.
+
+td.tablecell11:hover {
+	background-color : #FFFF88;
+}
+
+td.tablecell12:hover {
+	background-color : #FFFF88;
+}
+
+td.tablecell21:hover {
+	background-color : #FFFF88;
+}
+
+td.tablecell22:hover {
+	background-color : #FFFF88;
+}
+*/
+
+/* listgroup is the style for groupings on generic list, by default */
+
+td.listgroup {
+	background-color : #8888FF;
+	text-align: left;
+}
+
+td.listgroup p {
+	color : #FFFFCC;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	font-weight : bold;
+}
+
+/* listsubgroup is the style for subgroupings on generic lits, by default */
+
+td.listsubgroup {
+	background-color : #CCCCFF;
+	text-align: left;
+}
+
+td.listsubgroup p {
+	color : #330000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-weight : bold;
+	font-size : 10px;
+}
+
+/* contentclass is for editable fields on generic list, edit, by default */
+
+/*col.form_field input, select, textarea {
+	color : #800000;
+	font-family : Monaco, Courier, monospace;
+	font-size : 10px;
+}
+*//*
+textarea.form_field {
+	color : #000080;
+	font-family : Monaco, Courier, monospace;
+	font-size : 10px;
+}
+
+select.form_field {
+	color : #000080;
+	font-family : Monaco, Courier, monospace;
+	font-size : 10px;
+}
+
+p.form_field {
+	color : #000080;
+	font-family : Monaco, Courier, monospace;
+	font-size : 10px;
+}
+*/
+/* pagemessageclass is for page-wide messages on generic list, edit, by default */
+
+td.pagemessageclass {
+	background-color : #FFE8E8;
+}
+
+td.pagemessageclass p {
+	text-align: left;
+	color : #0000FF;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+/* rowmessageclass is for row-specific messages on generic list, by default */
+
+td.rowmessageclass {
+	background-color : #FFE8E8;
+}
+
+td.rowmessageclass p {
+	text-align: left;
+	vertical-align : top;
+	color : #FF0000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+
+
+/* formlabel_highlighted is for the label column in generic edit */
+
+td.form_label_highlighted {
+	background-color : #FFFF88;
+	text-align: left;
+	vertical-align : top;
+}
+
+td.form_label_highlighted p {
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+/* formfield is for the value column in generic edit, often superseded by contentclass */
+
+td.form_value {
+	text-align: left;
+	vertical-align : top;
+	background-color : #E8E8E8;
+}
+
+td.form_value p {
+	color : #000000;
+	font-family : Monaco, Courier, monospace;
+	font-size : 10px;
+}
+
+/* forminstruc is for the help text column for each field in generic edit */
+
+td.form_help {
+	background-color : #FFEEFF;
+	text-align: left;
+	vertical-align : top;
+}
+
+td.form_help p {
+	color : #CC0000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+/* fieldhelp is where the field help goes */
+
+td.fieldhelp {
+	width:350px;
+	background-color : #FFEEFF;
+	color : #CC0000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+/* editbuttons is for the editing buttons on generic edit screen */
+
+td.editbuttonscell {
+	background-color : #FFFF00;
+	vertical-align : middle;
+	text-align: center;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top : 0px;
+	padding-bottom : 0px;
+	width: 300px;
+}
+
+table.editbuttons {
+	background-color : #FFFF00;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	padding-bottom : 0px;
+	width : 100%;
+}
+
+table.editbuttons td {
+	background-color : #FFEE00;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	padding-left : 1px;
+	padding-right : 1px;
+	padding-top : 1px;
+	padding-bottom : 1px;
+	text-align: center;
+}
+
+table.editbuttons button {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top : 0px;
+	padding-bottom : 0px;
+	margin-left : 2px;
+	margin-right : 2px;
+	width: auto;
+}
+
+table.editbuttons p {
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 1px;
+	margin-bottom : 1px;
+	color : #440000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	text-align: center;
+}
+
+/* editcontainer is the table containing columns on generit edit */
+
+table.editcontainer {
+	background-color : #EEEEEE;
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	padding-bottom : 0px;
+	width : 100%;
+}
+
+table.editcontainer td {
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	padding-bottom : 0px;
+	vertical-align : top;
+}
+
+/* editfieldtable is the table containing fields on generit edit */
+
+table.editfieldtable {
+	text-align: left;
+	color : #000000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	padding-bottom : 0px;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	width : 100%;
+}
+
+table.editfieldtable td {
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	padding-left : 1px;
+	padding-right : 1px;
+	padding-top : 1px;
+	padding-bottom : 1px;
+	border-right: 1px dotted black;
+	border-bottom: 1px dotted black;
+}
+
+.hidden_row
+{
+display: none;
+}
+
+td.tablecell_new {
+	background-color : #EECCCC;
+	text-align: left;
+	vertical-align : top;
+	color : #FF0000;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+

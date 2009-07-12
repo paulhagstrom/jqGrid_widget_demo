@@ -1,0 +1,15 @@
+<div class="fancytable_edit_panel">
+	<%= form_to_event :state => :_edit_panel_submit %>
+		<table class="layout_table">
+			<tr>
+				<td colspan="2"><%= text_area_tag 'employee[blurb]', @record.blurb, :size => "25x3" %></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<%= submit_tag @record.new_record? ? "Add" : "Update" %> 
+					<%= cancel_button %>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
