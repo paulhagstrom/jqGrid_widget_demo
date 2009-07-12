@@ -40,34 +40,12 @@ function openTable(table) {
 var pendingJSON = new Array();
 function retrieveJSON(table,purl,pdata) {
 	var ts = jQuery(table)[0],
-	loadComplete = jQuery.isFunction(ts.p.loadComplete) ? ts.p.loadComplete : false,
-	bundle = false;
+	loadComplete = jQuery.isFunction(ts.p.loadComplete) ? ts.p.loadComplete : false;
 	if(jqgw_debug > 0) console.log('retrieveJSON here: called for table ' + table);
-	if (jQuery(table).data('bundle') == 1) {
-		jQuery(table).removeData('bundle');
-		bundle = true;
-	}
 	if (pendingJSON[table] == null) {
 		if(jqgw_debug) console.log('Nothing in the cache, have to call the server.');
 		indicateReq(table);
-		if (bundle || true) {
-			// If we've been asked for bundled data, then we don't do anything in direct response to this request,
-			// just get instructions from the server.
-			// Actually, I think it should just always be bundled.
-			jQuery.getScript(purl+'&'+jQuery.param(pdata)+'&bundle=yes');
-		} else {
-			jQuery.ajax({
-				url:purl,
-				data:pdata,
-				dataType:'json',
-				complete: function(jsondata,stat) {
-					if(stat=='success') {
-						ts.addJSONData(eval("("+jsondata.responseText+")"));
-						if(loadComplete) loadComplete(jsondata.responseText,'success');
-					}
-				}
-			});
-		}
+		jQuery.getScript(purl+'&'+jQuery.param(pdata)+'&bundle=yes');
 	} else {
 		if(jqgw_debug > 1) console.log('Already had it in the cache.');
 		ts.addJSONData(eval("("+pendingJSON[table]+")"));

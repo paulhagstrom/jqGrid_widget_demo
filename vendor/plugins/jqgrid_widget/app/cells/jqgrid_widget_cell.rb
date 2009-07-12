@@ -177,26 +177,15 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
     @columns << opts
   end
     
-  # This is the state called as the jQGrid data source.  It can return either JSON or Javascript, depending on
-  # what is requested.  If Javascript is requested, the data of this widget and its children are bundled together
+  # This is the state called as the jQGrid data source.  The data of this widget and its children are bundled together
   # in a series of Javascript commands that put the data in the cache and then tell the jqgrid to reload.
   # The way this works is by triggering events that the children are listening for, each of whom will return
   # their own Javascript.
   # This is also the handler for :recordSelected events sent by a parent to its children.
-  # The bundle_anyway is used by the "reflect update" handler, arising from a post for which I can't set the 'data' type.
-  def _send_recordset(children_unaware = true, inject_js = '', bundle_anyway = false)
-    bundle_anyway = true # TODO: From now on it is always bundled, soon I will remove the options
-    if (bundle_anyway || param(:bundle) == 'yes')
-      return '>>' + bundle_recordsets(children_unaware, inject_js) # >> is magic for "Javascript"
-    else
-      return '>>' + inject_js + _json_for_jqgrid # >> is also magic for data.  This clearly could be improved.
-    end
-  end
-  
   # The children_unaware parameter is set to false if the child itself has triggered this (used in _reflect_child_update).
   # No point in telling the children you've changed your record if you haven't. Actually, right, that's the thing to do.
   # Tell the children just if there was a change.  
-  def bundle_recordsets(children_unaware = true, inject_js = '')
+  def _send_recordset(children_unaware = true, inject_js = '')
     inject_js += js_push_json_to_cache(_json_for_jqgrid) + js_reload_jqgrid
     if children_unaware
       # The assumption is that a child needs to know what the parent's selection is in order to determine
@@ -219,7 +208,7 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
         trigger(:recordUpdated) #keep percolating up
       end
     end
-    return inject_js
+    return '>>' + inject_js
   end
   
   def new_record
@@ -248,7 +237,7 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   # without the superfluous downward message-passing, and with a preservation of the selection.
   # I'd use jump_to_state, but I'd have to set a transient instance variable to pass along the parameter.
   def _reflect_child_update(inject_js = '')
-    _send_recordset(false, inject_js, true)
+    _send_recordset(false, inject_js)
   end
   
   # This is a state that returns the JSON data for the recordset.
@@ -274,22 +263,6 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   # TODO: make the count actually be right.
   def load_records
     @filter, @subfilter, find_include, find_conditions, @total_records = filter_prepare
-    # @filter ||= @filters.first[0]
-    # @subfilter ||= {}
-    # filter = @filters.assoc(@filter)[1]
-    # # I had to do this in this kind of funny way to avoid actually modifying @filters.
-    # conditions = []
-    # find_include = []
-    # conditions += filter[:conditions] if filter[:conditions]
-    # find_include += filter[:include] if filter[:include]
-    # @subfilter.each do |key, sf|
-    #   fsf = filter[:subfilters].assoc(key)[1]
-    #   conditions[0] += ' and ' + fsf[:conditions]
-    #   conditions << sf.keys
-    #   find_include << fsf[:include] if fsf.has_key?(:include)
-    # end
-    # # puts "%%%%% FILTER INFO IN LOAD_RECORDS: include:[#{find_include.inspect}], conditions:[#{conditions.inspect}]."
-    # @total_records = scoped_model.count(:all, :include => find_include, :conditions => conditions)
     sord = (@sord == 'desc') ? 'DESC' : 'ASC'
     sidx = (@column_indices.include?(@sidx) ? @sidx : @columns[0][:field])
     find_order = "#{sidx} #{sord}"
@@ -321,12 +294,10 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   # Prepare the instance variables for load_record, using the filter, returns the total count
   # (So, this is also used just to get the count without actually loading the records)
   def filter_prepare(current_filter = @filter, subfilter = @subfilter)
-    # puts "*** FILTER_PREPARE: @filters is #{@filters.inspect} **** and current_filter is #{current_filter.inspect}."
     current_filter ||= @filters.first[0]
     subfilter ||= {}
     filter = @filters.assoc(current_filter)[1]
     # I had to do this in this kind of funny way to avoid actually modifying @filters.
-    # puts "*** FILTER_PREPARE: @filters is #{@filters.inspect} **** and current_filter is #{current_filter.inspect} **** and filter is #{filter.inspect}."
     find_conditions = []
     find_include = []
     find_conditions += filter[:conditions] if filter.has_key?(:conditions)
@@ -358,11 +329,8 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
     @record.update_attributes(param(param(:resource).to_sym))
     @record.save
     @record.reload # Be sure we get the id if this was a new record
-    # this is a hack, I've got to get the child updates to send their data bundled. So I pretend we got a bundled request.
-    # set_local_param(:bundle, 'yes')
     trigger(:recordSelected)
     # TODO: add some kind of feedback
-    # trigger(:recordUpdated)   # tell the parents to reload
     inject_js = <<-JS
       closeEditPanel('##{@jqgrid_id}');
     JS
