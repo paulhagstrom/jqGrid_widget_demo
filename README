@@ -1,9 +1,17 @@
+This isn't really ready for primetime, but here it is.  I'm still developing the plugin, and I created this demo for testing it as I was developing it.  I'm now about to go put it into the real project, which I expect will cause further relatively rapid changes to the plugin, but I will try to bring this demo app up to date as well when possible.
+
+This could use a fair amount of cleanup.  There are piles of commented-out code here, and also some superfluous Javascript files.  I'll clean it up at some point.
+
+
+
 To make this go
 
 git clone whatever-the-url-is
 cd whatever
 git submodule init
 git submodule update
-# Actually, never mind, it's part of the migrate now
-# rake db:sessions:create
 rake db:migrate
+script/server
+
+browse to http://localhost:3000/people/
+
