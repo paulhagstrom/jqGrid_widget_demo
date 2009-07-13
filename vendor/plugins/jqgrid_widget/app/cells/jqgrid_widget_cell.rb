@@ -14,9 +14,6 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   # TODO: Allow deleting of records.  The icon is there and perhaps all I need to do is set the jqgrid url.
   # TODO: Bring live search back.
   # TODO: The person add button doesn't do anything.
-  # TODO: The pagination options aren't working right. It is supposed to start at displaying 2, it displays 3.
-  # TODO: ...for 5 records, at 2 per page, it only provides pages 1 and 2.
-  # TODO: Changing the sort: can I preserve the selection?
   
   helper :all
   helper_method :js_reload_grid, :js_select_id, :js_push_json_to_cache, :empty_json
@@ -205,17 +202,14 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
     # Check to see if the selected record is still there.  If it is, nothing particular needs to be done,
     # jqGrid will maintain the UI selection.  If it's gone, we need to alert the children.
     selection_survived = (@record && @records.include?(@record))
-    # selection_survived = false
-    # TODO: I think there is something wrong with selection_survived.  I think it is giving false positives.
     unless selection_survived
       if @select_first_on_load && @records.size > 0
         select_record(@records.first.id) # This posts a :recordSelected event to the children
-        inject_js += "console.log('#{@jqgrid_id}: recordSelected: #{@record.id}.');"
+        # inject_js += "console.log('#{@jqgrid_id}: recordSelected: #{@record.id}.');"
         selection_survived = true
-        # inject_js += js_select_id(@record.id)
       else
         @record = resource_model.new
-        inject_js += "console.log('#{@jqgrid_id}: recordUnselected.');"
+        # inject_js += "console.log('#{@jqgrid_id}: recordUnselected.');"
         inject_js += js_select_id(nil)
         trigger(:recordUnselected) # Tell the children that we lost our selection
       end
@@ -258,12 +252,12 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   # The way I have it set up right now, this is never called directly from outside, though it in principle
   # could be if for some reason one wanted to bypass the cache.
   def _json_for_jqgrid
-    @page = (params[:page] || 1).to_i
-    @rows_per_page = params[:rows].to_i
-    @sidx = (params[:sidx] || 'name')
-    @sord = (params[:sord] || 'asc')
-    @search = params[:_search]
-    @livesearch = params[:_livesearch]
+    @page = (param(:page) || @page || 1).to_i
+    @rows_per_page = (param(:rows) || @rows_per_page || 20).to_i
+    @sidx = (param(:sidx) || @sidx || 'name')
+    @sord = (param(:sord) || @sord || 'asc')
+    @search = (param(:_search) || @search || '')
+    @livesearch = (param(:_livesearch) || @livesearch || '')
     load_records
     json = {
       :page => @page,
