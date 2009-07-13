@@ -5,6 +5,7 @@ class LogsCell < JqgridWidgetCell
       col.add_column('created_at', :width => 70, :sortable => true, :custom => :custom_date)
       col.add_column('body', :width => 150)
     end
+    @caption = 'Logs'
     nil
   end
 

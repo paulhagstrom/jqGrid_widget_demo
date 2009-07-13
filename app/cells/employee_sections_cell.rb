@@ -2,12 +2,14 @@ class EmployeeSectionsCell < JqgridWidgetCell
 
   def _setup
     super do |col|
-      col.add_column('sections.name', :width => 70, :custom => :custom_section)
+      col.add_column('sections.name', :index => 'name', :width => 70, :custom => :custom_section)
       col.add_column('title', :width => 150)
       col.add_column('advisor', :width => 30, :custom => :custom_advisor)
     end
     @filters.assoc('all')[1][:include] = [:section]
     @collapse_if_empty = true
+    @caption = 'Faculty/Staff affiliations'
+    @single_record_caption = "'Faculty/Staff affiliation: ' + row['sections.name']"
     nil
   end
   

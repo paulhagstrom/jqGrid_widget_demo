@@ -7,6 +7,8 @@ class StudentDegreesCell < JqgridWidgetCell
     end
     @filters.assoc('all')[1][:include] = [:degree, {:advisors => {:employee => :person}}]
     @collapse_if_empty = true
+    @caption = 'Degree tracks'
+    @single_record_caption = "'Degree track: ' + row['degrees.name']"
     # @row_panel = ''
     nil
   end

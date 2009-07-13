@@ -6,6 +6,7 @@ class ContactsCell < JqgridWidgetCell
       col.add_column('body', :width => 150)
     end
     @filters.assoc('all')[1][:include] = [:contact_type]
+    @caption = 'Contacts'
     nil
   end
   

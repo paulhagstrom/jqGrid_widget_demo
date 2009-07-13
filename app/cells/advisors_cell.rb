@@ -8,6 +8,7 @@ class AdvisorsCell < JqgridWidgetCell
     end
     @filters.assoc('all')[1][:include] = [{:employee => :person}]
     @collapse_if_empty = true
+    @caption = 'Advisors'
     # @row_panel = ''
     nil
   end

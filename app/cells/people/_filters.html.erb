@@ -35,8 +35,10 @@
 						<fieldset>
 							<legend><%= sf[1][:name] %></legend>
 							<% sf[1][:options].to_a.each do |sfop| %>
-								<%= check_box_tag "subfilter[#{sf[0]}][#{sfop[0]}]" %><%= sfop[1] %>
-								(<span id="<%= @jqgrid_id %>_<%= filter[0] %>_<%= sf[0] %>_<%= sfop[0] %>_count"></span>)
+							<div style="float:left;"><!-- put this in the css later -->
+								<span><%= check_box_tag "subfilter[#{sf[0]}][#{sfop[0]}]" %><%= sfop[1] %>
+								(<span id="<%= @jqgrid_id %>_<%= filter[0] %>_<%= sf[0] %>_<%= sfop[0] %>_count"></span>)</span>
+								</div>
 							<% end %>
 						</fieldset>
 						</td>

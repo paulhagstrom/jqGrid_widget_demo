@@ -8,6 +8,7 @@ class PeopleCell < JqgridWidgetCell
       col.add_column('profiles', :width => 175, :custom => :custom_profiles)
     end
     # @row_panel_under_row = true
+    @caption = 'People'
     @row_panel = ''
     
     @filters = [

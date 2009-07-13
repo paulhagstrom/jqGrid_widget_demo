@@ -39,7 +39,7 @@ module JqgridWidget::JqgridWidgetHelper
     # It would have been more convenient as a data call.  But I don't think data calls will bundle the child responses.
     # opts[:url] ||= url_for(address_to_event({:state => '_send_recordset', :bundle => 'yes', :escape => false}))
     opts[:url] ||= url_for(address_to_event({:state => '_send_recordset', :escape => false}))
-    opts[:caption] ||= 'Records'
+    opts[:caption] ||= @caption || 'Records'
     opts[:initial_sort] ||= @columns[0][:field]
     opts[:add_button] ||= true
 
@@ -121,13 +121,26 @@ module JqgridWidget::JqgridWidgetHelper
     
   # Prepare the reaction to the load completion.
   def wire_jqgrid_load_complete
-    return '' unless @collapse_if_empty
+    return '' unless (@collapse_if_empty || @single_record_caption)
     return <<-JS
     loadComplete: function(req) {
   		ids = jQuery('##{@jqgrid_id}').getDataIDs();
   		if (ids.length > 0) {
-  		  openTable('##{@jqgrid_id}');
+		    var row = jQuery('##{@jqgrid_id}').getRowData(ids[0]);
+  		  if (ids.length == 1 && #{(@single_record_caption ? 'true' : 'false')}) {
+    	    //console.dir(ids);
+  		    //console.dir(row);
+      		hideTable('##{@jqgrid_id}');
+  		    jQuery('##{@jqgrid_id}').setCaption(#{@single_record_caption});
+  		    jQuery('##{@jqgrid_id}').closest('.ui-jqgrid-view').find('.ui-jqgrid-titlebar').addClass('ui-state-highlight');
+  		  } else {
+  		    jQuery('##{@jqgrid_id}').setCaption("#{@caption}");
+  		    jQuery('##{@jqgrid_id}').closest('.ui-jqgrid-view').find('.ui-jqgrid-titlebar').removeClass('ui-state-highlight');
+    		  openTable('##{@jqgrid_id}');
+  		  }
   		} else {
+		    jQuery('##{@jqgrid_id}').setCaption("#{@caption}");
+		    jQuery('##{@jqgrid_id}').closest('.ui-jqgrid-view').find('.ui-jqgrid-titlebar').removeClass('ui-state-highlight');
     		hideTable('##{@jqgrid_id}');
   		}
     },
@@ -237,6 +250,7 @@ module JqgridWidget::JqgridWidgetHelper
     javascript_tag <<-JS
       jQuery('##{table}_filters').load('#{filter_partial}', function() {
         jQuery(this).find('input[type=checkbox]').click(function() {
+          jQuery(this).find
           var options = {
             dataType:'script'
           }

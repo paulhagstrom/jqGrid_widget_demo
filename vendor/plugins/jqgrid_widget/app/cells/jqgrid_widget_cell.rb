@@ -133,7 +133,11 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   # end
   # TODO: Perhaps later I may want to be able to make the default filter not be the first one?
   def _setup
+    @caption = 'Records'
     @collapse_if_empty = false
+    @single_record_caption = false
+    # @single_record_caption is a small Javascript snippet, can make use of 'row' variable.
+    # for example: @single_record_caption = "'Degree track: ' + row.name"
     @find_include = nil
     
     @filters = [['all', {:name => 'All'}]]

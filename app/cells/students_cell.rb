@@ -9,6 +9,7 @@ class StudentsCell < JqgridWidgetCell
     end
     @filters.assoc('all')[1][:include] = [:status]
     @collapse_if_empty = true
+    @caption = 'Student/Program'
     nil
   end
   

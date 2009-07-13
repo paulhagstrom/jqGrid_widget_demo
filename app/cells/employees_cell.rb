@@ -5,6 +5,7 @@ class EmployeesCell < JqgridWidgetCell
       col.add_column('blurb', :width => 250)
     end
     @collapse_if_empty = true
+    @caption = 'Profiles'
     nil
   end
   
