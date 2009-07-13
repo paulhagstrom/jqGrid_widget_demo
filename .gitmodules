@@ -4,3 +4,6 @@
 [submodule "vendor/plugins/cells"]
 	path = vendor/plugins/cells
 	url = git://github.com/apotonick/cells.git
+[submodule "vendor/plugins/jqgrid_widget"]
+	path = vendor/plugins/jqgrid_widget
+	url = git://github.com/paulhagstrom/jqGrid_widget.git
