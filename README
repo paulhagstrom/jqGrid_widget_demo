@@ -2,7 +2,7 @@ This isn't really ready for primetime, but here it is.  I'm still developing the
 
 This could use a fair amount of cleanup.  There are piles of commented-out code here, and also some superfluous Javascript files.  I'll clean it up at some point.
 
-
+Also, there seems to have been some movement in the development of both jqgrid and apotomo since I started putting this together, so this might be mildly out of date.
 
 To make this go
 
