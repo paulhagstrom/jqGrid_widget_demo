@@ -57,7 +57,7 @@ function pushJSON(table,json) {
 // I also ditched the beforeRequest and the check for initial collapsed status.
 function indicateReq(table) {
   var ts = jQuery(table)[0];
-	openTable(table);
+	//openTable(table);
 	switch(ts.p.loadui) {
 		case "disable":
 			break;

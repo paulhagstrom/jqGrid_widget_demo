@@ -13,6 +13,10 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   # TODO: Figure out some more elegant way to handle record associations.  Include everything by default?
   # TODO: Allow deleting of records.  The icon is there and perhaps all I need to do is set the jqgrid url.
   # TODO: Bring live search back.
+  # TODO: The person add button doesn't do anything.
+  # TODO: The pagination options aren't working right. It is supposed to start at displaying 2, it displays 3.
+  # TODO: ...for 5 records, at 2 per page, it only provides pages 1 and 2.
+  # TODO: Changing the sort: can I preserve the selection?
   
   helper :all
   helper_method :js_reload_grid, :js_select_id, :js_push_json_to_cache, :empty_json
@@ -82,11 +86,16 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
     JS
   end
   
-  def js_select_id(id = false)
-    return <<-JS
-		if(jqgw_debug > 1) console.log('Setting selection to id #{id.to_s}.');
-    jQuery('##{@jqgrid_id}').setSelection('#{id}', false);
-    JS
+  def js_select_id(id = nil)
+    if id
+      return <<-JS
+      jQuery('##{@jqgrid_id}').setSelection('#{id}', false);
+      JS
+    else
+      return <<-JS
+      jQuery('##{@jqgrid_id}').resetSelection();
+      JS
+    end
   end
   
   def js_push_json_to_cache(raw_json_data)
@@ -182,39 +191,44 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   # their own Javascript.
   # This is also the handler for :recordSelected events sent by a parent to its children.
   # The children_unaware parameter is set to false if the child itself has triggered this (used in _reflect_child_update).
-  # No point in telling the children you've changed your record if you haven't. Actually, right, that's the thing to do.
-  # Tell the children just if there was a change.  
+  # If there was a record selected before, try to maintain that selection. However if the record is no longer there,
+  # communicate to the children than they should reset.
+  # TODO: It should be possible to add an id=@record.id to the conditions load_record uses to determine whether
+  # the selection meets the new criteria, and if so, jump to the page it is on.  I of course need to make it possible
+  # to leave that page, but I think if you do leave the page, then the selection should be reset.
   def _send_recordset(children_unaware = true, inject_js = '')
     inject_js += js_push_json_to_cache(_json_for_jqgrid) + js_reload_jqgrid
-    if children_unaware
-      # The assumption is that a child needs to know what the parent's selection is in order to determine
-      # its own recordset.  Therefore, if this table is one that automatically selects the first record,
-      # announce to the children that a record has been selected.
-      # If, however, this is not such a table, then there will be no selection.
-      # In that case, the children will be told to empty themselves.
-      if @select_first_on_load
-        if (@grid_rows.size > 0) # @grid_rows and @records are set in load_records via _json_for_jqgrid via push_json_to_cache
-          select_record(@records.first.id)
-          inject_js += js_select_id(@record.id)
-        else
-          new_record
-        end
-      end
-    else
-      if @record && @record.id
-        inject_js += "if(jqgw_debug > 1) console.log('Setting selection to id #{@record.id}.');"
-        inject_js += "jQuery('##{@jqgrid_id}').setSelection('#{@record.id}', false);"
-        trigger(:recordUpdated) #keep percolating up
+    # inject_js += js_push_json_to_cache(_json_for_jqgrid) + js_reload_jqgrid
+    # If the children are aware, that means we arrived here just to do a refresh, no change in the filter.
+    # However, that could still affect the records included in the parent recordset (if the child's change
+    # means that the parent no longer meets the criteria).
+    # Check to see if the selected record is still there.  If it is, nothing particular needs to be done,
+    # jqGrid will maintain the UI selection.  If it's gone, we need to alert the children.
+    selection_survived = (@record && @records.include?(@record))
+    # selection_survived = false
+    # TODO: I think there is something wrong with selection_survived.  I think it is giving false positives.
+    unless selection_survived
+      if @select_first_on_load && @records.size > 0
+        select_record(@records.first.id) # This posts a :recordSelected event to the children
+        inject_js += "console.log('#{@jqgrid_id}: recordSelected: #{@record.id}.');"
+        selection_survived = true
+        # inject_js += js_select_id(@record.id)
+      else
+        @record = resource_model.new
+        inject_js += "console.log('#{@jqgrid_id}: recordUnselected.');"
+        inject_js += js_select_id(nil)
+        trigger(:recordUnselected) # Tell the children that we lost our selection
       end
     end
+    if selection_survived
+      inject_js += js_select_id(@record.id)
+    end
+    unless children_unaware
+      trigger(:recordUpdated) # But in any event tell the parent to refresh if needed
+    end    
     return '>>' + inject_js
   end
-  
-  def new_record
-    @record = resource_model.new
-    trigger(:recordUnselected)
-  end
-  
+    
   # When a row is clicked, the controller's row selection handler gets the notification and sends it here.
   # This announces to the children that a record was selected, much as _send_recordsets does.
   # TODO: This is redundantly checked for in the Javascript, perhaps it is not worth also checking here for a change.
@@ -228,6 +242,7 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   # This is the handler for :recordUnselected events sent by parents to children, it stuffs an empty recordset into
   # the cache and then reloads.
   def _clear_recordset
+    trigger(:recordUnselected) # Keep passing the word down the tree
     return '>>' + js_push_json_to_cache(empty_json) + js_reload_jqgrid
   end
   
@@ -259,6 +274,7 @@ class JqgridWidgetCell < Apotomo::StatefulWidget
   end
   
   # This is the actual method that queries the database.
+  # TODO: This is not working, it seems to be returning too many results.
   def load_records
     @filter, @subfilter, find_include, find_conditions, @total_records = filter_prepare
     sord = (@sord == 'desc') ? 'DESC' : 'ASC'

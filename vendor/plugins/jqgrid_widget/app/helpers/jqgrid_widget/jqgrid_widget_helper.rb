@@ -44,7 +44,7 @@ module JqgridWidget::JqgridWidgetHelper
     opts[:add_button] ||= true
 
     col_names, col_model = wire_jqgrid_columns
-    empty_table = (@is_top_widget == 'yes') ? "jQuery('##{@jqgrid_id}').data('bundle',1);" : js_push_json_to_cache(empty_json)
+    empty_table = (@is_top_widget == 'yes') ? "jQuery('##{@jqgrid_id}');" : js_push_json_to_cache(empty_json)
     javascript_tag <<-JS
     #{empty_table}
     jQuery("##{@jqgrid_id}").jqGrid({
@@ -73,6 +73,8 @@ module JqgridWidget::JqgridWidgetHelper
     ;
     // make the whole titlebar expland and collapse the table
     activateTitleBar('##{@jqgrid_id}');
+    // replace "Loading..." with a spinner
+    jQuery('#load_#{@jqgrid_id}').html("<img src='/images/indicator.white.gif'>");
     JS
   end
   
@@ -142,7 +144,7 @@ module JqgridWidget::JqgridWidgetHelper
         if(ids != jQuery('##{@jqgrid_id}').getGridParam('selrow')){
           #{children_loading}
           closeEditPanel('##{@jqgrid_id}');
-          jQuery.getScript("#{url_for(address_to_event({:type => :rowClick, :escape => false}))}&bundle=yes&id="+ids);
+          jQuery.getScript("#{url_for(address_to_event({:type => :rowClick, :escape => false}))}&id="+ids);
         }
         return true;
       },
