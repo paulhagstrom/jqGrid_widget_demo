@@ -6,12 +6,23 @@ Also, there seems to have been some movement in the development of both jqgrid a
 
 To make this go
 
-git clone whatever-the-url-is
-cd whatever
+git clone git://github.com/paulhagstrom/jqGrid_widget_demo.git
+cd jqGrid_widget_demo
 git submodule init
 git submodule update
+cd public/images
+ln -s vendor/plugins/jqgrid_widget/public/images/indicator.white.gif
+ln -s vendor/plugins/jqgrid_widget/public/javascripts/jqgrid_widget.js
+ln -s vendor/plugins/jqgrid_widget/public/stylesheets/jqgrid_widget.css
+
 rake db:migrate
 script/server
 
 browse to http://localhost:3000/people/
+
+Dependencies (will be pulled in during the submodule update stage)
+
+jqGrid_widget
+git://github.com/paulhagstrom/jqGrid_widget.git
+
 
