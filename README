@@ -1,10 +1,6 @@
 This isn't really ready for primetime, but here it is.  I'm still developing the plugin, and I created this demo for testing it as I was developing it.  I'm now about to go put it into the real project, which I expect will cause further relatively rapid changes to the plugin, but I will try to bring this demo app up to date as well when possible.
 
-This could use a fair amount of cleanup.  There are piles of commented-out code here, and also some superfluous Javascript files.  I'll clean it up at some point.
-
-Also, there seems to have been some movement in the development of both jqgrid and apotomo since I started putting this together, so this might be mildly out of date.
-
-To make this go
+To make this go, clone the demo app, pull in the submodules, create the databases, start the server, populate the database, and check it out.  The student degrees screen is a very simple screen with a single widget, the people screen is a more interactive test.
 
 git clone git://github.com/paulhagstrom/jqGrid_widget_demo.git
 cd jqGrid_widget_demo
@@ -12,12 +8,12 @@ git submodule init
 git submodule update
 rake db:migrate
 script/server
-
+browse to http://localhost:3000/student_degrees/populate
+later
+browse to http://localhost:3000/student_degrees/
 browse to http://localhost:3000/people/
 
-Dependencies (will be pulled in during the submodule update stage)
-
-There are some symbolic links into these dependencies.  Created by:
+Dependencies are listed below.  Many are installed as git submodules, which will be pulled in at the git submodule update stage above.  To make updating easier, most of the UI stuff is symbolically linked into the public/ directory.  The symbolic links were created as follows:
 
 in public/images:
 ln -s vendor/plugins/jqgrid_widget/public/images/indicator.white.gif
@@ -39,6 +35,9 @@ in public/stylesheets:
 ln -s ../../vendor/plugins/jquery-ui/css/redmond/images
 ln -s ../../vendor/plugins/jquery-ui/css/redmond/jquery-ui-1.8rc3.custom.css jquery-ui.css
 ln -s ../../vendor/plugins/jqGrid/css/ui.jqgrid.css
+
+
+The dependencies themselves:
 
 jQuery
 This can be downloaded from jquery.com.  As I write this, it's at 1.4.2.  Put updates in the public/javascripts folder.  There is a symbolic link (jquery.js) to the current version, which needs to be redirected when there is an update.  I have opted to point the symbolic link at the version that comes with jQuery UI, however.
@@ -76,6 +75,7 @@ Added as a submodule, git will update
 cells
 git://github.com/apotonick/cells.git
 Added as a submodule, git will update
+
 
 Non-dependencies:
 
