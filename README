@@ -18,23 +18,35 @@ browse to http://localhost:3000/people/
 Dependencies (will be pulled in during the submodule update stage)
 
 There are some symbolic links into these dependencies.  Created by:
+
 in public/images:
 ln -s vendor/plugins/jqgrid_widget/public/images/indicator.white.gif
 ln -s vendor/plugins/jqgrid_widget/public/javascripts/jqgrid_widget.js
 ln -s vendor/plugins/jqgrid_widget/public/stylesheets/jqgrid_widget.css
+
 in vendor/plugins:
 ln -s jquery.jqGrid-3.6.4 jqGrid
+ln -s jquery-ui-1.8rc3.custom/ jquery-ui
+
 in public/javascripts:
-ln -s jquery-1.4.2.min.js jquery.js
+ln -s ../../vendor/plugins/jquery-ui/js/jquery-1.4.2.min.js jquery.js
+ln -s ../../vendor/plugins/jquery-ui/js/jquery-ui-1.8rc3.custom.min.js jquery-ui.js
 ln -s ../../vendor/plugins/jqGrid/js/jquery.jqGrid.min.js
 ln -s ../../vendor/plugins/jqGrid/js/i18n/grid.locale-en.js
 ln -s ../../vendor/plugins/jquery.form/jquery.form.js
 
+in public/stylesheets:
+ln -s ../../vendor/plugins/jquery-ui/css/redmond/images
+ln -s ../../vendor/plugins/jquery-ui/css/redmond/jquery-ui-1.8rc3.custom.css jquery-ui.css
+ln -s ../../vendor/plugins/jqGrid/css/ui.jqgrid.css
+
 jQuery
-This has to be downloaded from jquery.com.  As I write this, it's at 1.4.2.  Put updates in the public/javascripts folder.  There is a symbolic link (jquery.js) to the current version, which needs to be redirected when there is an update.
+This can be downloaded from jquery.com.  As I write this, it's at 1.4.2.  Put updates in the public/javascripts folder.  There is a symbolic link (jquery.js) to the current version, which needs to be redirected when there is an update.  I have opted to point the symbolic link at the version that comes with jQuery UI, however.
 
 jQuery UI
 This also has to be downloaded, from jqueryui.com.  As I write this, it's at 1.8rc3.  I have made no attempt to minimize the components, maybe sometime I will take an inventory.  I just downloaded the whole thing.  Redmond theme.  I don't know of a github repository.
+Installed into vendor/plugins, with symbolic links.  There is a symbolic link (jquery-ui) to the current version, which needs to be redirected when there's an update.
+The theme setup seems less good than before, everything seems more integrated, harder to download just the theme files.  For now, the symbolic link in public/stylesheets will force redmond.
 
 jqGrid
 git://github.com/tonytomov/jqGrid.git
