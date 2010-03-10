@@ -7,6 +7,4 @@
 [submodule "vendor/plugins/jqgrid_widget"]
 	path = vendor/plugins/jqgrid_widget
 	url = git://github.com/paulhagstrom/jqGrid_widget.git
-[submodule "vendor/plugins/jqGrid"]
-	path = vendor/plugins/jqGrid
-	url = git://github.com/tonytomov/jqGrid.git
+

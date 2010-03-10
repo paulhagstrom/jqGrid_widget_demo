@@ -10,11 +10,6 @@ git clone git://github.com/paulhagstrom/jqGrid_widget_demo.git
 cd jqGrid_widget_demo
 git submodule init
 git submodule update
-cd public/images
-ln -s vendor/plugins/jqgrid_widget/public/images/indicator.white.gif
-ln -s vendor/plugins/jqgrid_widget/public/javascripts/jqgrid_widget.js
-ln -s vendor/plugins/jqgrid_widget/public/stylesheets/jqgrid_widget.css
-
 rake db:migrate
 script/server
 
@@ -22,7 +17,39 @@ browse to http://localhost:3000/people/
 
 Dependencies (will be pulled in during the submodule update stage)
 
+There are some symbolic links into these dependencies.  Created by:
+in public/images:
+ln -s vendor/plugins/jqgrid_widget/public/images/indicator.white.gif
+ln -s vendor/plugins/jqgrid_widget/public/javascripts/jqgrid_widget.js
+ln -s vendor/plugins/jqgrid_widget/public/stylesheets/jqgrid_widget.css
+in public/javascripts:
+ln -s jquery-1.4.2.min.js jquery.js
+ln -s ../../vendor/plugins/jqGrid/js
+ln -s ../../vendor/plugins/jqGrid/jquery.jqGrid.js
+ln -s ../../vendor/plugins/jqGrid/js/i18n/grid.locale-en.js
+
+jQuery
+This has to be downloaded from jquery.com.  As I write this, it's at 1.4.2.  Put updates in the public/javascripts folder.  There is a symbolic link (jquery.js) to the current version, which needs to be redirected when there is an update.
+
+jQuery UI
+This also has to be downloaded, from jqueryui.com.  As I write this, it's at 1.8rc3.  I have made no attempt to minimize the components, maybe sometime I will take an inventory.  I just downloaded the whole thing.  Redmond theme.  I don't know of a github repository.
+
+jqGrid
+git://github.com/tonytomov/jqGrid.git
+The git source is plugged in with a loader, which makes it easier to keep up to date, but for production, it is probably better to keep it up to date by hand by building it here
+http://www.trirand.com/blog/
+As I write this, 3.6.4 is available, and I have built it as jquery.jqGrid.min.js.  This does not point into the repository, and will not be updated by git updates, it needs to be fixed by hand.
+
 jqGrid_widget
 git://github.com/paulhagstrom/jqGrid_widget.git
 
+apotomo
+git://github.com/apotonick/apotomo.git
 
+cells
+git://github.com/apotonick/cells.git
+
+Non-dependencies:
+
+Prototype
+The hope is that I have gotten away from depending on prototype.  This means that controls.js, dragdrop.js, effects.js, and prototype.js should not be needed.
