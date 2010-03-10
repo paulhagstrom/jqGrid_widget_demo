@@ -22,11 +22,13 @@ in public/images:
 ln -s vendor/plugins/jqgrid_widget/public/images/indicator.white.gif
 ln -s vendor/plugins/jqgrid_widget/public/javascripts/jqgrid_widget.js
 ln -s vendor/plugins/jqgrid_widget/public/stylesheets/jqgrid_widget.css
+in vendor/plugins:
+ln -s jquery.jqGrid-3.6.4 jqGrid
 in public/javascripts:
 ln -s jquery-1.4.2.min.js jquery.js
-ln -s ../../vendor/plugins/jqGrid/js
-ln -s ../../vendor/plugins/jqGrid/jquery.jqGrid.js
+ln -s ../../vendor/plugins/jqGrid/js/jquery.jqGrid.min.js
 ln -s ../../vendor/plugins/jqGrid/js/i18n/grid.locale-en.js
+ln -s ../../vendor/plugins/jquery.form/jquery.form.js
 
 jQuery
 This has to be downloaded from jquery.com.  As I write this, it's at 1.4.2.  Put updates in the public/javascripts folder.  There is a symbolic link (jquery.js) to the current version, which needs to be redirected when there is an update.
@@ -38,16 +40,30 @@ jqGrid
 git://github.com/tonytomov/jqGrid.git
 The git source is plugged in with a loader, which makes it easier to keep up to date, but for production, it is probably better to keep it up to date by hand by building it here
 http://www.trirand.com/blog/
-As I write this, 3.6.4 is available, and I have built it as jquery.jqGrid.min.js.  This does not point into the repository, and will not be updated by git updates, it needs to be fixed by hand.
+As I write this, 3.6.4 is available, and I have built it as jquery.jqGrid.min.js.  This does not point into the repository, and will not be updated by git updates, it needs to be fixed by hand.  There is an alias jqGrid in vendor/plugins that points to the current jqGrid directory.
+
+TableDnD
+http://www.isocra.com/2008/02/table-drag-and-drop-jquery-plugin/
+Install in public/javascripts directly, not version controlled
+http://code.google.com/p/tablednd/
+Current version afaik is 0.5.
+
+jQuery Form
+http://malsup.com/jquery/form/
+git://github.com/malsup/form.git
+Added as a submodule, git will update
 
 jqGrid_widget
 git://github.com/paulhagstrom/jqGrid_widget.git
+Added as a submodule, git will update
 
 apotomo
 git://github.com/apotonick/apotomo.git
+Added as a submodule, git will update
 
 cells
 git://github.com/apotonick/cells.git
+Added as a submodule, git will update
 
 Non-dependencies:
 

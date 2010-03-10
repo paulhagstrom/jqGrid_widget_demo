@@ -8,3 +8,6 @@
 	path = vendor/plugins/jqgrid_widget
 	url = git://github.com/paulhagstrom/jqGrid_widget.git
 
+[submodule "vendor/plugins/jquery.form"]
+	path = vendor/plugins/jquery.form
+	url = git://github.com/malsup/form.git
