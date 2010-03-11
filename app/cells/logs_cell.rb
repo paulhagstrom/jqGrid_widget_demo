@@ -6,7 +6,7 @@ class LogsCell < JqgridWidgetCell
       col.add_column('body', :width => 150)
     end
     @caption = 'Logs'
-    nil
+    render
   end
 
   def custom_date(log)

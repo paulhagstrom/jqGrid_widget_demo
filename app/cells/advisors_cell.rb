@@ -10,7 +10,7 @@ class AdvisorsCell < JqgridWidgetCell
     @collapse_if_empty = true
     @caption = 'Advisors'
     # @row_panel = ''
-    nil
+    render
   end
   
   # TODO: Use a CSS class for the table display options

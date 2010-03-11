@@ -24,9 +24,10 @@ class PeopleController < JqgridWidgetController
     embed_widget(student_degrees_cell, jqg_widget('advisor', opts))
     embed_widget(employees_cell, jqg_widget('employee_section', opts))
     
-    respond_to_event :rowClick, :with => :handle_select
-    
-    @jqgrid = render_widget(people_cell.name)
+    # respond_to_event :rowClick, :with => :handle_select
+    super
+    @content = render_widget(people_cell.name)
+    render
   end
 
 end

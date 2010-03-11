@@ -6,7 +6,7 @@ class EmployeesCell < JqgridWidgetCell
     end
     @collapse_if_empty = true
     @caption = 'Profiles'
-    nil
+    render
   end
   
   def scoped_model

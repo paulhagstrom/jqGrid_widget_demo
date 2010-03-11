@@ -1,6 +1,6 @@
 This isn't really ready for primetime, but here it is.  I'm still developing the plugin, and I created this demo for testing it as I was developing it.  I'm now about to go put it into the real project, which I expect will cause further relatively rapid changes to the plugin, but I will try to bring this demo app up to date as well when possible.
 
-To make this go, clone the demo app, pull in the submodules, create the databases, start the server, populate the database, and check it out.  The student degrees screen is a very simple screen with a single widget, the people screen is a more interactive test.
+To make this go, clone the demo app, pull in the submodules, create the databases, start the server, populate the database, and check it out.  The degrees screen is a very simple screen with a single widget, the people screen is a more interactive test.
 
 git clone git://github.com/paulhagstrom/jqGrid_widget_demo.git
 cd jqGrid_widget_demo
@@ -8,10 +8,27 @@ git submodule init
 git submodule update
 rake db:migrate
 script/server
-browse to http://localhost:3000/student_degrees/populate
+browse to http://localhost:3000/degrees/populate
 later
-browse to http://localhost:3000/student_degrees/
+browse to http://localhost:3000/degrees/
 browse to http://localhost:3000/people/
+
+There are a couple of different levels of complexity here.
+
+The most basic screen is 
+
+http://localhost:3000/sections/
+
+This just allows editing of the sections.
+
+Only slightly more complex is degrees, which has popup menus referring to sections and programs
+
+http://localhost:3000/degrees/
+
+
+The most complex is people, with many interactions
+
+http://localhost:3000/people/
 
 Dependencies are listed below.  Many are installed as git submodules, which will be pulled in at the git submodule update stage above.  To make updating easier, most of the UI stuff is symbolically linked into the public/ directory.  The symbolic links were created as follows:
 
@@ -30,6 +47,7 @@ ln -s ../../vendor/plugins/jquery-ui/js/jquery-ui-1.8rc3.custom.min.js jquery-ui
 ln -s ../../vendor/plugins/jqGrid/js/jquery.jqGrid.min.js
 ln -s ../../vendor/plugins/jqGrid/js/i18n/grid.locale-en.js
 ln -s ../../vendor/plugins/jquery.form/jquery.form.js
+ln -s ../../vendor/plugins/jrails/javascripts/jrails.js
 
 in public/stylesheets:
 ln -s ../../vendor/plugins/jquery-ui/css/redmond/images
@@ -52,6 +70,10 @@ git://github.com/tonytomov/jqGrid.git
 The git source is plugged in with a loader, which makes it easier to keep up to date, but for production, it is probably better to keep it up to date by hand by building it here
 http://www.trirand.com/blog/
 As I write this, 3.6.4 is available, and I have built it as jquery.jqGrid.min.js.  This does not point into the repository, and will not be updated by git updates, it needs to be fixed by hand.  There is an alias jqGrid in vendor/plugins that points to the current jqGrid directory.
+
+jrails
+git://github.com/aaronchi/jrails.git
+I decided it's easier to just go ahead and use this.
 
 TableDnD
 http://www.isocra.com/2008/02/table-drag-and-drop-jquery-plugin/

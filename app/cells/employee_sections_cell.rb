@@ -10,7 +10,7 @@ class EmployeeSectionsCell < JqgridWidgetCell
     @collapse_if_empty = true
     @caption = 'Faculty/Staff affiliations'
     @single_record_caption = "'Faculty/Staff affiliation: ' + row['sections.name']"
-    nil
+    render
   end
   
   def custom_section(employee_section)

@@ -1,13 +1,14 @@
-class StudentDegreesController < JqgridWidgetController
+class DegreesController < JqgridWidgetController
   
   layout 'admin_jquery'
 
   # This is the simplest possible screen, in order to test the basics.
   
   def index
-    use_widget student_degrees_cell = jqg_top_widget('student_degree')
+    use_widget degrees_cell = jqg_top_widget('degree')
     super
-    @content = render_widget(student_degrees_cell.name)
+    @content = render_widget(degrees_cell.name)
+    render
   end
 
   def populate

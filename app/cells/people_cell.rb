@@ -30,7 +30,7 @@ class PeopleCell < JqgridWidgetCell
           :options => Section.find(:all).map {|x| [x.id, x.name]}}],
           ]}],
     ]
-    nil
+    render
   end
     	  
   def custom_degrees(person)
@@ -79,76 +79,3 @@ class PeopleCell < JqgridWidgetCell
   end
   
 end
-
-#   # def filters_available
-#   #   # super.merge({
-#   #   #   'ns' => {:name => 'Titles after H', :conditions => ["title > 'H'"]},
-#   #   # })
-#   #   super
-#   # end
-#   # 
-#   # def resources_default_order
-#   #   # 'authors.name, books.title'
-#   #   nil
-#   # end
-#   # 
-#   # def attributes_to_update
-#   #   # [:title]
-#   #   []
-#   # end
-#   # 
-#   # def child_panels
-#   #   # {'author' => :author_id, 'publisher' => :publisher_id}
-#   #   {}
-#   # end
-#   # 
-#   # def resources_include
-#   #   # [:author, :publisher]
-#   #   nil
-#   # end
-#   # 
-#   # def hud_panels
-#   #   # super.merge({
-#   #   #   :detail => ['div_book_detail_panels', false],
-#   #   #   :message => ['div_book_message', false],
-#   #   # })
-#   #   super
-#   # end  
-#     
-# end
-
-# def edit_panel
-#   case params[:table]
-#   when 'people_list'
-#     @person = Person.find_by_id(params[:id])
-#     @students = @person.students
-#     case params[:panel].to_i
-#     when 0
-#       partial = 'name_panel'
-#     when 1
-#       partial = 'student_panel'
-#     else
-#       partial = 'other_panel'
-#     end
-#     render :partial => partial
-#   when 'person_contacts_list'
-#     @contact = Contact.find_by_id(params[:id])
-#     render :partial => 'contacts_panel'
-#   when 'person_logs_list'
-#     @log = Log.find_by_id(params[:id])
-#     render :partial => 'logs_panel'
-#   end
-#   # render :text => html
-# end
-# 
-# def name_submit
-#   @person = Person.find_by_id(params[:id])
-#   @person.update_attributes(params[:person])
-#   render :partial => 'name_panel'
-# end
-# 
-# def student_submit
-#   @person = Person.find_by_id(params[:id])
-#   # @person.update_attributes(params[:person])
-#   render :partial => 'student_panel'
-# end

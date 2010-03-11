@@ -7,7 +7,7 @@ class ContactsCell < JqgridWidgetCell
     end
     @filters.assoc('all')[1][:include] = [:contact_type]
     @caption = 'Contacts'
-    nil
+    render
   end
   
   def custom_type(contact)

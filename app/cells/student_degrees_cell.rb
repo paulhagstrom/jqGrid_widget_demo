@@ -10,7 +10,7 @@ class StudentDegreesCell < JqgridWidgetCell
     @caption = 'Degree tracks'
     @single_record_caption = "'Degree track: ' + row['degrees.name']"
     # @row_panel = ''
-    nil
+    render
   end
   
   def custom_track(student_degree)

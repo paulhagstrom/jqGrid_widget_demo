@@ -1,18 +1,18 @@
 <% jqgrid_widget_block_to_partial 'jqgrid_widget/panel_frame' do %>
 	<table class="layout_table">
 		<tr>
-			<td>Title</td>
-			<td><%= text_field_tag 'employee_section[title]', @record.title, :size => 15 %></td>
+			<td>Name</td>
+			<td><%= text_field_tag 'degree[name]', @record.name, :size => 60 %></td>
 		</tr>
 		<tr>
 			<td>Section</td>
-			<td><%= select_tag('employee_section[section_id]',
+			<td><%= select_tag('degree[section_id]',
 			options_for_select(Section.find(:all).collect{|c| [c.name, c.id]}, @record.section_id)) %></td>
 		</tr>
 		<tr>
-			<td>Advisor?</td>
-			<td><input name='employee_section[is_advisor]' type='hidden' value='0' />
-			<%= check_box_tag 'employee_section[is_advisor]', '1', (@record.is_advisor ? true : false) %></td>
+			<td>Program</td>
+			<td><%= select_tag('degree[program_id]',
+			options_for_select(Program.find(:all).collect{|c| [c.name, c.id]}, @record.program_id)) %></td>
 		</tr>
 		<tr>
 			<td colspan="2">

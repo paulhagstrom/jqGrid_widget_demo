@@ -10,7 +10,7 @@ class StudentsCell < JqgridWidgetCell
     @filters.assoc('all')[1][:include] = [:status]
     @collapse_if_empty = true
     @caption = 'Student/Program'
-    nil
+    render
   end
   
   def custom_status(student)

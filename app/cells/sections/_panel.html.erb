@@ -1,7 +1,8 @@
 <% jqgrid_widget_block_to_partial 'jqgrid_widget/panel_frame' do %>
 	<table class="layout_table">
 		<tr>
-			<td colspan="2"><%= text_area_tag 'employee[blurb]', @record.blurb, :size => "25x3" %></td>
+			<td>Name</td>
+			<td><%= text_field_tag 'section[name]', @record.name, :size => 60 %></td>
 		</tr>
 		<tr>
 			<td colspan="2">
