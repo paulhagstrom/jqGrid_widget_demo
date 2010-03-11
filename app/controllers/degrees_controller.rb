@@ -70,7 +70,7 @@ class DegreesController < JqgridWidgetController
     [['Joe StudentBA', 'LX major'], ['Pierre StudentBA', 'LX minor'], ['Pierre StudentBA', 'LF major']].each do |x|
       (stdg[x[0]+x[1]] = StudentDegree.new(:student_id => stud[x[0]].id, :degree_id => deg[x[1]].id)).save
     end
-    [['Paul Hagstrom', 'LX', 'ASCP', true], ['Ed Staff', 'RS', 'Help', false]].each do |x|
+    [['Paul Hagstrom', 'LX', 'ASCP', true], ['Paul Hagstrom', 'RS', 'Systems', false], ['Ed Staff', 'RS', 'Help', false]].each do |x|
       (empsec[x[0]+x[1]] = EmployeeSection.new(:employee_id => emp[x[0]].id, :section_id => sec[x[1]].id,
         :title => x[2], :is_advisor => x[3])).save
     end

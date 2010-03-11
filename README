@@ -13,18 +13,19 @@ later
 browse to http://localhost:3000/degrees/
 browse to http://localhost:3000/people/
 
-There are a couple of different levels of complexity here.
+There are a couple of different levels of complexity here available for testing.
 
-The most basic screen is 
+The most basic screen is programs, just allows editing of a lookup table.
 
-http://localhost:3000/sections/
+http://localhost:3000/programs/
 
-This just allows editing of the sections.
-
-Only slightly more complex is degrees, which has popup menus referring to sections and programs
+Only slightly more complex is degrees, which has popup menus referring to sections and programs, and demonstrates the use of custom column renderers.
 
 http://localhost:3000/degrees/
 
+One step more complicated is the employees screen, which has a child table.  When there is just one record, the child table doesn't expand, only displays.
+
+http://localhost:3000/employees/
 
 The most complex is people, with many interactions
 
