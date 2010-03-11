@@ -14,7 +14,8 @@ class PeopleController < JqgridWidgetController
   # The "top widget" designation marks the uppermost parent in the widget group (there might be more than one).
   # It is used in determining whether we can assume ahead of time that the list will start empty (when the parent's selection is empty)
   def index
-    opts = {:prefix => 'per_'}
+    opts = {}
+    # opts = {:prefix => 'per_'}
     use_widget people_cell = jqg_top_widget('person', opts)
     embed_widget(people_cell, jqg_widget('log', opts))
     embed_widget(people_cell, jqg_widget('contact', opts))

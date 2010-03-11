@@ -2,7 +2,7 @@ class EmployeeSectionsCell < JqgridWidgetCell
 
   def _setup
     super do |col|
-      col.add_column('sections.name', :index => 'name', :width => 70, :custom => :custom_section)
+      col.add_column('sections.name', :index => 'name', :width => 70, :custom => :custom_section, :label => 'Section')
       col.add_column('title', :width => 150)
       col.add_column('advisor', :width => 30, :custom => :custom_advisor)
     end

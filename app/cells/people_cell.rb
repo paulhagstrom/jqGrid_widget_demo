@@ -7,32 +7,33 @@ class PeopleCell < JqgridWidgetCell
       col.add_column('degrees', :width => 175, :custom => :custom_degrees)
       col.add_column('profiles', :width => 175, :custom => :custom_profiles)
     end
+    
     # @row_panel_under_row = true
     @caption = 'People'
     @row_panel = ''
     
     @filters = [
       ['all', {:name => 'All'}],
-      ['students', {:name => 'Students', :include => [:students], :conditions => ['students.id > ?', 0], :subfilters => [
-        ['degree', {:name => 'Degrees', :include => {:students => :student_degrees},
+      ['students', {:name => 'Students', :include => [{:students => [:student_degrees, :advisors]}], :conditions => ['students.id > ?', 0], :subfilters => [
+        ['degree', {:name => 'Degrees', 
           :conditions => 'student_degrees.degree_id in (?)',
             :options => Degree.find(:all).map {|x| [x.id, x.name]}}],
         ['program', {:name => 'Programs', :conditions => 'students.program_id in (?)',
           :options => Program.find(:all).map {|x| [x.id, x.name]}}],
-        ['advisor', {:name => 'Advisors', :include => {:students => :advisors}, :conditions => 'advisors.employee_id in (?)',
+        ['advisor', {:name => 'Advisors', :conditions => 'advisors.employee_id in (?)',
           :options => EmployeeSection.find(:all, :include => {:employee => :person},
             :conditions => {:is_advisor => true}).map {|x| [x.id, x.employee.person.name]}}],
         ['status', {:name => 'Status', :conditions => 'students.status_id in (?)',
           :options => Status.find(:all).map {|x| [x.id, x.name]}}],
         ]}],
-      ['employees', {:name => 'Faculty/Staff', :include => [:employees], :conditions => ['employees.id > ?', 0], :subfilters => [
-        ['section', {:name => 'Sections', :include => {:employees => :employee_sections}, :conditions => 'employee_sections.section_id in (?)',
+      ['employees', {:name => 'Faculty/Staff', :include => [{:employees => :employee_sections}], :conditions => ['employees.id > ?', 0], :subfilters => [
+        ['section', {:name => 'Sections', :conditions => 'employee_sections.section_id in (?)',
           :options => Section.find(:all).map {|x| [x.id, x.name]}}],
           ]}],
     ]
     render
   end
-    	  
+          
   def custom_degrees(person)
     student_out = ''
     for student in person.students

@@ -1,5 +1,10 @@
 This isn't really ready for primetime, but here it is.  I'm still developing the plugin, and I created this demo for testing it as I was developing it.  I'm now about to go put it into the real project, which I expect will cause further relatively rapid changes to the plugin, but I will try to bring this demo app up to date as well when possible.
 
+TODO list that I know about:
+Filter counts: shouldn't they work for superfilters too? (e.g., all?)  They don't.
+Prefixes don't really work.  A problem with the rendered children?  Somewhere it's a problem.  Maybe I should remove support?
+Subfilter includes are not working.  Have to set them in the superfilter at the moment.
+
 To make this go, clone the demo app, pull in the submodules, create the databases, start the server, populate the database, and check it out.  The degrees screen is a very simple screen with a single widget, the people screen is a more interactive test.
 
 git clone git://github.com/paulhagstrom/jqGrid_widget_demo.git
