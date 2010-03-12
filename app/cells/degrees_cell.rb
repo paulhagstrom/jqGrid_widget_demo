@@ -6,7 +6,9 @@ class DegreesCell < JqgridWidgetCell
       col.add_column('section_id', :width => 50, :sortable => false, :custom => :section_name)
       col.add_column('program_id', :width => 50, :sortable => false, :custom => :program_name)
     end
-    @caption = 'Degrees'
+    @jqgrid_options.update({
+      :height => 350
+    })
     @rows_per_page = 20
     render
   end

@@ -6,13 +6,14 @@ class AdvisorsCell < JqgridWidgetCell
       col.add_column('start_date', :width => 50, :sortable => true)
       col.add_column('end_date', :width => 50, :sortable => true)
     end
-    @filters.assoc('all')[1][:include] = [{:employee => :person}]
-    @collapse_if_empty = true
-    @caption = 'Advisors'
-    # @row_panel = ''
+    eager_load [{:employee => :person}]
+    @jqgrid_options.update({
+      :collapse_if_empty => true,
+      :height => 50
+    })
     render
   end
-  
+    
   # TODO: Use a CSS class for the table display options
   def custom_advisor(advisor)
     advisor.employee.person.name

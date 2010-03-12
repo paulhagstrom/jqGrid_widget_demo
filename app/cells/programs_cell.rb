@@ -4,7 +4,9 @@ class ProgramsCell < JqgridWidgetCell
     super do |col|
       col.add_column('name', :width => 100, :sortable => 'default')
     end
-    @caption = 'Programs'
+    @jqgrid_options.update({
+      :height => 50
+    })
     render
   end
 

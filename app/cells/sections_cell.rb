@@ -4,7 +4,9 @@ class SectionsCell < JqgridWidgetCell
     super do |col|
       col.add_column('name', :width => 100, :sortable => 'default')
     end
-    @caption = 'Sections'
+    @jqgrid_options.update({
+      :height => 75
+    })
     render
   end
 

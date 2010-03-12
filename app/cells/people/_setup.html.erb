@@ -21,11 +21,5 @@
 	</tr>
 </table>
 <%#= wire_live_search %>
-<%= wire_jqgrid({
-	# :caption => 'People',
-	:height => 350,
-	# :enable_panel => 'title',
-	:pager => {:rows => 20, :rows_options => '2,5,2500'},
-	:sortname => 'name'
-}) %>
+<%= wire_jqgrid %>
 <%= wire_filters %>

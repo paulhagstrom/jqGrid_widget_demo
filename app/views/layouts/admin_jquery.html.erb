@@ -5,32 +5,20 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>jqGrid_widget test</title>
-	  <%= stylesheet_link_tag 'infoman' %>
-	  <%#= stylesheet_link_tag 'fancytable' %>
-    <script type="text/javascript">
-      rails_authenticity_token = '<%= form_authenticity_token %>'
-    </script>
+	<%= stylesheet_link_tag 'infoman' %>
+	<%= stylesheet_link_tag 'jqgrid_widget' %>
+	<script type="text/javascript">
+		rails_authenticity_token = '<%= form_authenticity_token %>'
+	</script>
 
-  <%= stylesheet_link_tag "jquery-ui.css" %>
-  <%= stylesheet_link_tag 'ui.jqgrid.css' %>
-  <%#= stylesheet_link_tag 'fancytable.css' %>
-  <%= javascript_include_tag 'jquery' %>
-  <%= javascript_include_tag 'jquery-ui' %>
-  <%#= javascript_include_tag 'jquery-1.3.2.min' %>
-  <%#= javascript_include_tag 'jquery-ui-1.7.2.custom.min' %>
-  <%= javascript_include_tag 'grid.locale-en' %>
-  <%= javascript_include_tag 'jquery.form' %>
-
-  <%# Uncomment the loader below if javascript debugging is called for. %>
-  <%# Now trying to use the cutting edge github version %>
-  <%#= javascript_include_tag 'jquery.jqGrid.min' %>
-  <%#= javascript_include_tag 'src/grid.loader' %>
-  <%= javascript_include_tag 'jquery.jqGrid.min' %>
-  <%#= javascript_include_tag 'src/jqModal' %>
-  <%#= javascript_include_tag 'src/jqDnR' %>
-  <%#= javascript_include_tag :defaults %>
-
-  <%= javascript_include_tag 'jqgrid_widget' %>
+	<%= stylesheet_link_tag "jquery-ui.css" %>
+	<%= stylesheet_link_tag 'ui.jqgrid.css' %>
+	<%= javascript_include_tag 'jquery' %>
+	<%= javascript_include_tag 'jquery-ui' %>
+	<%= javascript_include_tag 'grid.locale-en' %>
+	<%= javascript_include_tag 'jquery.form' %>
+	<%= javascript_include_tag 'jquery.jqGrid.min' %>
+	<%= javascript_include_tag 'jqgrid_widget' %>
 
 </head>
 <body>
@@ -40,7 +28,7 @@
 	jqgrid_widget test app
 	</td>
 	<td class="nav_title">
-		flash notice
+		(flash notice)
 	</td>
 	<td class="nav_user">
 	User info
@@ -53,14 +41,22 @@
 		<td class="nav_bar">
 		<table class="layout_table">
 			<tr class="nav_block">
-				<td>&nbsp;TopNav block&nbsp;</td>
+				<td>&nbsp;Screens&nbsp;</td>
 			</tr>
 			<tr class="nav_items">
 				<td colspan="2">
-					<p>Programs</p>
-					<p>Degrees</p>
-					<p>Employees</p>
-					<p>People</p>
+					<p><%= link_to "Programs", {:controller => 'programs', :action => 'index'} %></p>
+					<p><%= link_to "Degrees", {:controller => 'degrees', :action => 'index'} %></p>
+					<p><%= link_to "Employees", {:controller => 'employees', :action => 'index'} %></p>
+					<p><%= link_to "People", {:controller => 'people', :action => 'index'} %></p>
+				</td>
+			</tr>
+			<tr class="nav_block">
+				<td>&nbsp;Utility&nbsp;</td>
+			</tr>
+			<tr class="nav_items">
+				<td colspan="2">
+					<p><%= link_to "Repopulate", {:controller => 'degrees', :action => 'populate'} %></p>
 				</td>
 			</tr>
 		</table>

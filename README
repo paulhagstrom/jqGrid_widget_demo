@@ -5,7 +5,7 @@ Filter counts: shouldn't they work for superfilters too? (e.g., all?)  They don'
 Prefixes don't really work.  A problem with the rendered children?  Somewhere it's a problem.  Maybe I should remove support?
 Subfilter includes are not working.  Have to set them in the superfilter at the moment.
 
-To make this go, clone the demo app, pull in the submodules, create the databases, start the server, populate the database, and check it out.  The degrees screen is a very simple screen with a single widget, the people screen is a more interactive test.
+To make this go, clone the demo app, pull in the submodules, create the databases, start the server, populate the database, and explore:
 
 git clone git://github.com/paulhagstrom/jqGrid_widget_demo.git
 cd jqGrid_widget_demo
@@ -59,7 +59,7 @@ in public/stylesheets:
 ln -s ../../vendor/plugins/jquery-ui/css/redmond/images
 ln -s ../../vendor/plugins/jquery-ui/css/redmond/jquery-ui-1.8rc3.custom.css jquery-ui.css
 ln -s ../../vendor/plugins/jqGrid/css/ui.jqgrid.css
-
+ln -s ../../vendor/plugins/jqgrid_widget/public/stylesheets/jqgrid_widget.css
 
 The dependencies themselves:
 

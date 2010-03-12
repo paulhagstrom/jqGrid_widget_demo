@@ -2,15 +2,17 @@ class PeopleCell < JqgridWidgetCell
   
   def _setup
     super do |col|
-      # col.add_column('name', :width => 100, :sortable => true)
       col.add_column('name', :width => 100, :sortable => true, :panel => '_panel', :panel_under_row => true)
       col.add_column('degrees', :width => 175, :custom => :custom_degrees)
       col.add_column('profiles', :width => 175, :custom => :custom_profiles)
     end
     
-    # @row_panel_under_row = true
-    @caption = 'People'
-    @row_panel = ''
+    @jqgrid_options.update({
+      :row_action => 'row_panel',
+    	:pager => {:rows => 20, :rows_options => '2,5,2500'},
+    	:sortname => 'name',
+      :height => 350
+    })
     
     @filters = [
       ['all', {:name => 'All'}],
