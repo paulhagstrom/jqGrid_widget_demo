@@ -5,7 +5,7 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => '_fancytable_session',
+  :key         => '_jqgw_demo_session',
   :secret      => '0d9754e66e9bf27023f0775a19c2dc81d9b554028eab945fca71b5a9ffb90014af16d5fc58308db21ae29729c08d93926026e2c23f2c303aa3b33acc1074be42'
 }
 
