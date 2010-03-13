@@ -8,7 +8,7 @@ class StudentDegreesCell < JqgridWidgetCell
     eager_load [:degree, {:advisors => {:employee => :person}}]
     @jqgrid_options.update({
       :collapse_if_empty => true,
-      :single_record_caption => "'Degree track: ' + row['degrees.name']",
+      :single_record_caption => '"Degree track: " + row["degrees.name"]',
       :caption => 'Degree tracks',
       :height => 50
     })

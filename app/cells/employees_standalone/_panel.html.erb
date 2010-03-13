@@ -1,5 +1,12 @@
 <% jqgrid_widget_block_to_partial 'jqgrid_widget/panel_frame' do %>
 	<table class="layout_table">
+		<col width='50' />
+		<col width='200' />
+		<tr>
+			<td>Person</td>
+			<td><%= selector_display 'person' %></td>
+			<%= hidden_field_tag 'employee[person_id]', @record.person_id %>
+		</tr>
 		<tr>
 			<td colspan="2"><%= text_area_tag 'employee[blurb]', @record.blurb, :size => "25x3" %></td>
 		</tr>

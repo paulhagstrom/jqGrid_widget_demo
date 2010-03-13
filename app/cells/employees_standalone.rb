@@ -6,6 +6,8 @@ class EmployeesStandalone < JqgridWidgetCell
   # The custom column has a special label.
   # The templates for this are in the "employees_standalone" directory
   
+  helper_method :employee_person_name
+  
   def _setup
     super do |col|
       col.add_column('people.name', :width => 100, :label => 'Name', :sortable => 'default', :custom => :employee_person_name)
@@ -13,14 +15,14 @@ class EmployeesStandalone < JqgridWidgetCell
     end
     eager_load :person
     @jqgrid_options.update({
-      :collapse_if_empty => true,
-      :height => 50
+      :height => 250
     })
+    @selectors = {'person' => [:person_id, :employee_person_name]}
     render
   end
   
   def employee_person_name(employee)
-    employee.person_id ? employee.person.name : '(??)'
+    employee.person_id ? employee.person.name : '(No person selected)'
   end
-    
+
 end

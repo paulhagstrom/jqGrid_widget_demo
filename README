@@ -2,10 +2,15 @@ This isn't really ready for primetime, but here it is.  I'm still developing the
 
 TODO list that I know about (for plugin or for demo app)
 Filter counts: shouldn't they work for superfilters too? (e.g., all?)  They don't.
+Filters themselves don't really work.  What is the expected behavior for these checkboxes?
 Prefixes don't really work.  A problem with the rendered children?  Somewhere it's a problem.  Maybe I should remove support?
 Subfilter includes are not working.  Have to set them in the superfilter at the moment.
 The navigation bar at the bottom isn't really working properly.
-Work on paging, work on delete and add buttons.
+Check paging
+Check selection, work on interface.
+After making a selection with a closed, panel new panel should open?
+After making a selection, the checkmark does not appear.
+
 
 To make this go, clone the demo app, pull in the submodules, create the databases, start the server, populate the database, and explore:
 

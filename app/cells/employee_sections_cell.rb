@@ -9,7 +9,7 @@ class EmployeeSectionsCell < JqgridWidgetCell
     eager_load :section
     @jqgrid_options.update({
       :collapse_if_empty => true,
-      :single_record_caption => "'Faculty/Staff affiliation: ' + row['sections.name']",
+      :single_record_caption => '"Faculty/Staff affiliation: " + row["sections.name"]',
       :caption => 'Faculty/Staff affiliations',
       :height => 75
     })

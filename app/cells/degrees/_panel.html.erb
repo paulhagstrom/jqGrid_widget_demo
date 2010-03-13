@@ -1,8 +1,10 @@
 <% jqgrid_widget_block_to_partial 'jqgrid_widget/panel_frame' do %>
 	<table class="layout_table">
 		<tr>
-			<td>Name</td>
-			<td><%= text_field_tag 'degree[name]', @record.name, :size => 60 %></td>
+			<td colspan="2">Name</td>
+		</tr>
+		<tr>
+			<td colspan="2"><%= text_field_tag 'degree[name]', @record.name, :size => 20 %></td>
 		</tr>
 		<tr>
 			<td>Section</td>
