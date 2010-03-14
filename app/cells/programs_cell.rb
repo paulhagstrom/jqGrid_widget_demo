@@ -5,9 +5,9 @@ class ProgramsCell < JqgridWidgetCell
       col.add_column('name', :width => 250, :sortable => 'default')
     end
     @jqgrid_options.update({
-      :add_button => true,
-      :del_button => true,
-      :row_action => 'panel',
+      # :add_button => true,
+      # :del_button => false,
+      # :row_action => 'panel',
       :height => 150
     })
     render
