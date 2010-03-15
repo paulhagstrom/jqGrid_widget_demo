@@ -1,15 +1,15 @@
 This isn't really ready for primetime, but here it is.  I'm still developing the plugin, and I created this demo for testing it as I was developing it.  I'm now about to go put it into the real project, which I expect will cause further relatively rapid changes to the plugin, but I will try to bring this demo app up to date as well when possible.
 
 TODO list that I know about (for plugin or for demo app)
+Filter animations are a bit bumpy
 Filter counts: shouldn't they work for superfilters too? (e.g., all?)  They don't.
-Filters themselves don't really work.  What is the expected behavior for these checkboxes?
-Prefixes don't really work.  A problem with the rendered children?  Somewhere it's a problem.  Maybe I should remove support?
-Subfilter includes are not working.  Have to set them in the superfilter at the moment.
-The navigation bar at the bottom isn't really working properly.
+Filters: check on subfilter includes
 Check paging
-Check selection, work on interface.
-After making a selection with a closed, panel new panel should open?
-After making a selection, the checkmark does not appear.
+Selectors: After making a selection with a closed, panel new panel should open? (intended originally)
+Selectors: When you cancel, and hide the panel, selectors should revert to none checked.
+Selector targets: Some way to indicate that they're dirty?
+There is a problem with resource aliases and cell classes. They'll confuse the widget tree if you have two with the same id.
+Prefixes don't really work.  A problem with the rendered children?  Somewhere it's a problem.  Maybe I should remove support?
 
 
 To make this go, clone the demo app, pull in the submodules, create the databases, start the server, populate the database, and explore:
