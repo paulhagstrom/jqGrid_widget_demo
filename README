@@ -51,23 +51,25 @@ ln -s vendor/plugins/jqgrid_widget/public/javascripts/jqgrid_widget.js
 ln -s vendor/plugins/jqgrid_widget/public/stylesheets/jqgrid_widget.css
 
 in vendor/plugins:
-ln -s jquery.jqGrid-3.6.4 jqGrid
-ln -s jquery-ui-1.8rc3.custom/ jquery-ui
+ln -s jqGriddemo38/ jqGrid
+ln -s jquery-ui-1.8.4.custom/ jquery-ui
 
 in public/javascripts:
 ln -s ../../vendor/plugins/jquery-ui/js/jquery-1.4.2.min.js jquery.js
-ln -s ../../vendor/plugins/jquery-ui/js/jquery-ui-1.8rc3.custom.min.js jquery-ui.js
-ln -s ../../vendor/plugins/jqGrid/js/jquery.jqGrid.min.js
-ln -s ../../vendor/plugins/jqGrid/js/i18n/grid.locale-en.js
+ln -s ../../vendor/plugins/jquery-ui/js/jquery-ui-1.8.4.custom.min.js jquery-ui.js
 ln -s ../../vendor/plugins/jquery.form/jquery.form.js
 ln -s ../../vendor/plugins/jrails/javascripts/jrails.js
+ln -s ../../vendor/plugins/dataTables-1.7/media/js/jquery.dataTables.min.js
+ln -s ../../vendor/plugins/jqGrid/js/i18n/grid.locale-en.js
+cp ../../vendor/plugins/jqGrid/js/jquery.jqGrid.js .
+EDIT jquery.jqGrid.js pathtojsfiles to be "public/javascripts/jqGrid/js/"
 
 in public/stylesheets:
 ln -s ../../vendor/plugins/jquery-ui/css/redmond/images
-ln -s ../../vendor/plugins/jquery-ui/css/redmond/jquery-ui-1.8rc3.custom.css jquery-ui.css
-ln -s ../../vendor/plugins/jqGrid/css/ui.jqgrid.css
+ln -s ../../vendor/plugins/jquery-ui/css/redmond/jquery-ui-1.8.4.custom.css jquery-ui.css
+ln -s ../../vendor/plugins/jqGrid/themes/ui.jqgrid.css
+ln -s ../../vendor/plugins/jqGrid/themes/ui.multiselect.css
 ln -s ../../vendor/plugins/jqgrid_widget/public/stylesheets/jqgrid_widget.css
-ln -s ../../vendor/plugins/jquery-ui/css/redmond jquery-ui
 
 The dependencies themselves:
 
@@ -75,19 +77,23 @@ jQuery
 This can be downloaded from jquery.com.  As I write this, it's at 1.4.2.  Put updates in the public/javascripts folder.  There is a symbolic link (jquery.js) to the current version, which needs to be redirected when there is an update.  I have opted to point the symbolic link at the version that comes with jQuery UI, however.
 
 jQuery UI
-This also has to be downloaded, from jqueryui.com.  As I write this, it's at 1.8rc3.  I have made no attempt to minimize the components, maybe sometime I will take an inventory.  I just downloaded the whole thing.  Redmond theme.  I don't know of a github repository.
+This also has to be downloaded, from jqueryui.com.  As I write this, it's at 1.8.4.  I have made no attempt to minimize the components, maybe sometime I will take an inventory.  I just downloaded the whole thing.  Redmond theme.  I don't know of a github repository.
 Installed into vendor/plugins, with symbolic links.  There is a symbolic link (jquery-ui) to the current version, which needs to be redirected when there's an update.
 The theme setup seems less good than before, everything seems more integrated, harder to download just the theme files.  For now, the symbolic link in public/stylesheets will force redmond.
 
+dataTables
+http://www.datatables.net/
+I am considering switching over to dataTables, or perhaps including that as an option.  This has been placed in vendor/plugins, at v1.7.0 now.
+
 jqGrid
-git://github.com/tonytomov/jqGrid.git
-The git source is plugged in with a loader, which makes it easier to keep up to date, but for production, it is probably better to keep it up to date by hand by building it here
 http://www.trirand.com/blog/
-As I write this, 3.6.4 is available, and I have built it as jquery.jqGrid.min.js.  This does not point into the repository, and will not be updated by git updates, it needs to be fixed by hand.  There is an alias jqGrid in vendor/plugins that points to the current jqGrid directory.
+As I write this, 3.8 beta is available, and I have dropped it in vendors/plugins.  This does not point into the repository, and will not be updated by git updates, it needs to be fixed by hand.  This is the recommended version for newer versions of jQuery, although it is not minimized.  Because the loader needs to be able to find everything and requires a change by hand, the loader was copied (not aliased) into the javascripts directory.
+
 
 jrails
 git://github.com/aaronchi/jrails.git
 I decided it's easier to just go ahead and use this.
+I would like to remove the dependencies on this if possible. Apotomo mostly forced me before, but I think it has become more agnostic.
 
 TableDnD
 http://www.isocra.com/2008/02/table-drag-and-drop-jquery-plugin/
