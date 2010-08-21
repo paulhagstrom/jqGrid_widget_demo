@@ -110,7 +110,7 @@ Added as a submodule, git will update
 
 cells
 git://github.com/apotonick/cells.git
-Added as a submodule, git will update
+Now using gem, current version 3.3.4
 
 
 Non-dependencies:
