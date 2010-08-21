@@ -5,7 +5,10 @@ class DegreesController < JqgridWidgetController
   # This is the simplest possible screen, in order to test the basics.
   
   def index
-    use_widget degrees_cell = jqg_top_widget('degree')
+    degrees_cell = jqg_top_widget('degree')
+    use_widgets do |root|
+      root << degrees_cell
+    end
     super
     @content = render_widget(degrees_cell.name)
     render
