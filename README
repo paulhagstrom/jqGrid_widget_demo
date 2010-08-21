@@ -58,11 +58,11 @@ in public/javascripts:
 ln -s ../../vendor/plugins/jquery-ui/js/jquery-1.4.2.min.js jquery.js
 ln -s ../../vendor/plugins/jquery-ui/js/jquery-ui-1.8.4.custom.min.js jquery-ui.js
 ln -s ../../vendor/plugins/jquery.form/jquery.form.js
-ln -s ../../vendor/plugins/jrails/javascripts/jrails.js
 ln -s ../../vendor/plugins/dataTables-1.7/media/js/jquery.dataTables.min.js
 ln -s ../../vendor/plugins/jqGrid/js/i18n/grid.locale-en.js
+ln -s ../../vendor/plugins/jqGrid/ jqGrid
 cp ../../vendor/plugins/jqGrid/js/jquery.jqGrid.js .
-EDIT jquery.jqGrid.js pathtojsfiles to be "public/javascripts/jqGrid/js/"
+EDIT jquery.jqGrid.js pathtojsfiles to be "/javascripts/jqGrid/js/"
 
 in public/stylesheets:
 ln -s ../../vendor/plugins/jquery-ui/css/redmond/images
@@ -88,12 +88,6 @@ I am considering switching over to dataTables, or perhaps including that as an o
 jqGrid
 http://www.trirand.com/blog/
 As I write this, 3.8 beta is available, and I have dropped it in vendors/plugins.  This does not point into the repository, and will not be updated by git updates, it needs to be fixed by hand.  This is the recommended version for newer versions of jQuery, although it is not minimized.  Because the loader needs to be able to find everything and requires a change by hand, the loader was copied (not aliased) into the javascripts directory.
-
-
-jrails
-git://github.com/aaronchi/jrails.git
-I decided it's easier to just go ahead and use this.
-I would like to remove the dependencies on this if possible. Apotomo mostly forced me before, but I think it has become more agnostic.
 
 TableDnD
 http://www.isocra.com/2008/02/table-drag-and-drop-jquery-plugin/

@@ -1,0 +1,27 @@
+<%
+	# Note: This requires the jRails plugin in order to get past the dependency on Prototype.
+	# In place of "Form" below, you might have:
+	# <td><%= text_field_tag 'section[name]', @record.name, :size => 60 %></td>
+	# And, uncommenting the submit_tag is also highly recommended.
+	# You can use the jqgrid_widget_block_to_partial line as-is, it will pick up the _panel_frame
+	# partial within the plugin, or you can put a copy in app/cells/jqgrid_widget/_panel_frame.html.erb
+	# to set up an application-wide form frame.
+	# Using the <col> tags (or a css style with a fixed width) will prevent things from hopping around
+	# when selections are made.
+-%>
+<% jqgrid_widget_block_to_partial 'jqgrid_widget/panel_frame' do %>
+	<table class="layout_table">
+		<col width='50' />
+		<col width='200' />
+		<tr>
+			<td>Placeholder</td>
+			<td>Form</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<%#= submit_tag @record.new_record? ? "Add" : "Update" %> 
+				<%= cancel_button %>
+			</td>
+		</tr>
+	</table>
+<% end %>
