@@ -7,6 +7,8 @@ class PeopleCell < JqgridWidgetCell
       col.add_column('profiles', :width => 175, :custom => :custom_profiles)
     end
     
+    @livesearch_fields = {'name' => ['name']}
+    
     @jqgrid_options.update({
       :row_action => 'row_panel',
     	:pager => {:rows => 20, :rows_options => '2,5,2500'},
