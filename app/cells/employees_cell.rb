@@ -4,6 +4,7 @@ class EmployeesCell < JqgridWidgetCell
     super do |col|
       col.add_column('blurb', :width => 250)
     end
+    @select_on_load = true
     @jqgrid_options.update({
       :collapse_if_empty => true,
       :caption => 'Profiles',
@@ -12,12 +13,12 @@ class EmployeesCell < JqgridWidgetCell
     render
   end
   
-  def scoped_model
-    parent.record.employees
-  end
+  # def scoped_model
+  #   parent.record.employees
+  # end
   
-  def select_on_load
-    true
-  end
+  # def select_on_load
+  #   true
+  # end
     
 end

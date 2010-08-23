@@ -24,8 +24,8 @@ class EmployeeSectionsCell < JqgridWidgetCell
     (employee_section.is_advisor ? 'Yes' : 'No')
   end
   
-  def scoped_model
-    parent.record.employee_sections
-  end
+  # def scoped_model
+  #   parent.record.employee_sections
+  # end
     
 end
