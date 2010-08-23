@@ -1,0 +1,26 @@
+<% jqgrid_widget_block_to_partial 'jqgrid_widget/panel_frame' do %>
+	<table class="layout_table">
+		<tr>
+			<td colspan="2">Name</td>
+		</tr>
+		<tr>
+			<td colspan="2"><%= text_field_tag 'degree[name]', @record.name, :size => 20 %></td>
+		</tr>
+		<tr>
+			<td>Section</td>
+			<td><%= select_tag('degree[section_id]',
+			options_for_select(Section.find(:all).collect{|c| [c.name, c.id]}, @record.section_id)) %></td>
+		</tr>
+		<tr>
+			<td>Program</td>
+			<td><%= selector_display 'program' %></td>
+			<%= hidden_field_tag 'degree[program_id]', @record.program_id %>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<%= submit_tag @record.new_record? ? "Add" : "Update" %> 
+				<%= cancel_button %>
+			</td>
+		</tr>
+	</table>
+<% end %>

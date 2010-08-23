@@ -15,8 +15,8 @@ class LogsCell < JqgridWidgetCell
     log.created_at.strftime('%m/%d/%Y')
   end
   
-  def scoped_model
-    parent.record.logs
-  end
+  # def scoped_model
+  #   parent.record.logs
+  # end
 
 end

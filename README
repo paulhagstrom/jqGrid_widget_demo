@@ -7,8 +7,6 @@ Filters: check on subfilter includes
 Check paging
 Selectors: After making a selection with a closed, panel new panel should open? (intended originally)
 Selectors: When you cancel, and hide the panel, selectors should revert to none checked.
-Selector targets: Some way to indicate that they're dirty?
-There is a problem with resource aliases and cell classes. They'll confuse the widget tree if you have two with the same id.
 Prefixes don't really work.  A problem with the rendered children?  Somewhere it's a problem.  Maybe I should remove support?
 
 
@@ -35,6 +33,8 @@ Only slightly more complex is degrees, which has popup menus referring to sectio
 
 http://localhost:3000/degrees/
 
+There's a somewhat more complicated version of degrees as well that has a selector.
+
 One step more complicated is the employees screen, which has a child table.  When there is just one record, the child table doesn't expand, only displays.
 
 http://localhost:3000/employees/
@@ -55,10 +55,10 @@ ln -s jqGriddemo38/ jqGrid
 ln -s jquery-ui-1.8.4.custom/ jquery-ui
 
 in public/javascripts:
+ln -s ../../vendor/plugins/jrails/javascripts/jrails.js
 ln -s ../../vendor/plugins/jquery-ui/js/jquery-1.4.2.min.js jquery.js
 ln -s ../../vendor/plugins/jquery-ui/js/jquery-ui-1.8.4.custom.min.js jquery-ui.js
 ln -s ../../vendor/plugins/jquery.form/jquery.form.js
-ln -s ../../vendor/plugins/dataTables-1.7/media/js/jquery.dataTables.min.js
 ln -s ../../vendor/plugins/jqGrid/js/i18n/grid.locale-en.js
 ln -s ../../vendor/plugins/jqGrid/ jqGrid
 cp ../../vendor/plugins/jqGrid/js/jquery.jqGrid.js .
@@ -83,7 +83,7 @@ The theme setup seems less good than before, everything seems more integrated, h
 
 dataTables
 http://www.datatables.net/
-I am considering switching over to dataTables, or perhaps including that as an option.  This has been placed in vendor/plugins, at v1.7.0 now.
+I am considering switching over to dataTables, or perhaps including that as an option.  I had temporarily placed this in vendor/plugins, at v1.7.0, then removed it.  For later.
 
 jqGrid
 http://www.trirand.com/blog/
@@ -94,6 +94,7 @@ http://www.isocra.com/2008/02/table-drag-and-drop-jquery-plugin/
 Install in public/javascripts directly, not version controlled
 http://code.google.com/p/tablednd/
 Current version afaik is 0.5.
+Not actually sure I use this, do I?
 
 jQuery Form
 http://malsup.com/jquery/form/
@@ -111,6 +112,9 @@ Added as a submodule, git will update
 cells
 git://github.com/apotonick/cells.git
 Now using gem, current version 3.3.4
+
+jrails
+This is still needed.
 
 
 Non-dependencies:

@@ -3,14 +3,13 @@ class DegreesController < JqgridWidgetController
   layout 'admin_jquery'
 
   # This is the simplest possible screen, in order to test the basics.
-  
+  # This also has the populate method to populate the databases
+
   def index
-    degrees_cell = jqg_top_widget('degree')
-    use_widgets do |root|
-      root << degrees_cell
-    end
     super
-    @content = render_widget(degrees_cell.name)
+    use_widgets do |root|
+      root << jqg_top_widget('degree')
+    end
     render
   end
 

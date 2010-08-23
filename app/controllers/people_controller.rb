@@ -13,21 +13,23 @@ class PeopleController < JqgridWidgetController
   # Parents watch their children for :recordUpdated events and redraw themselves to reflect the child's changes.
   # The "top widget" designation marks the uppermost parent in the widget group (there might be more than one).
   # It is used in determining whether we can assume ahead of time that the list will start empty (when the parent's selection is empty)
+
   def index
-    opts = {}
-    # opts = {:prefix => 'per_'}
-    use_widget people_cell = jqg_top_widget('person', opts)
-    embed_widget(people_cell, jqg_widget('log', opts))
-    embed_widget(people_cell, jqg_widget('contact', opts))
-    embed_widget(people_cell, employees_cell = jqg_widget('employee', opts))
-    embed_widget(people_cell, students_cell = jqg_widget('student', opts))
-    embed_widget(students_cell, student_degrees_cell = jqg_widget('student_degree', opts))
-    embed_widget(student_degrees_cell, jqg_widget('advisor', opts))
-    embed_widget(employees_cell, jqg_widget('employee_section', opts))
-    
-    # respond_to_event :rowClick, :with => :handle_select
     super
-    @content = render_widget(people_cell.name)
+    use_widgets do |root|
+      root << jqg_top_widget('person') do |perwid|
+        jqg_child_widget(perwid, 'log')
+        jqg_child_widget(perwid, 'contact')
+        jqg_child_widget(perwid, 'employee') do |empwid|
+          jqg_child_widget(empwid, 'employee_section')
+        end
+        jqg_child_widget(perwid, 'student') do |stuwid|
+          jqg_child_widget(stuwid, 'student_degree') do |stdwid|
+            jqg_child_widget(stdwid, 'advisor')
+          end
+        end
+      end
+    end
     render
   end
 

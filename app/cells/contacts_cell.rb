@@ -16,9 +16,9 @@ class ContactsCell < JqgridWidgetCell
     contact.contact_type.name
   end
 
-  def scoped_model
-    parent.record.contacts
-  end
+  # def scoped_model
+  #   parent.record.contacts
+  # end
   
     
 end

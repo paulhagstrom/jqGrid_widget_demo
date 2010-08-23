@@ -17,6 +17,7 @@
 	<%= javascript_include_tag 'grid.locale-en' %>
 	<%= javascript_include_tag 'jquery.form' %>
 	<%= javascript_include_tag 'jquery.jqGrid' %>
+	<%= javascript_include_tag 'jrails' %>
 	<%= javascript_include_tag 'jqgrid_widget' %>
 
 </head>
@@ -46,6 +47,7 @@
 				<td colspan="2">
 					<p><%= link_to "Programs", {:controller => 'programs', :action => 'index'} %></p>
 					<p><%= link_to "Degrees", {:controller => 'degrees', :action => 'index'} %></p>
+					<p><%= link_to "Degrees (select)", {:controller => 'degrees_select', :action => 'index'} %></p>
 					<p><%= link_to "Employees", {:controller => 'employees', :action => 'index'} %></p>
 					<p><%= link_to "People", {:controller => 'people', :action => 'index'} %></p>
 				</td>

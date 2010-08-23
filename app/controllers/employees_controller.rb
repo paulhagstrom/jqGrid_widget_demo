@@ -2,16 +2,18 @@ class EmployeesController < JqgridWidgetController
   
   layout 'admin_jquery'
 
-  # This has a subtable.
-  
+  # This demonstrates a list with a child list and a selector list.
+
   def index
-    use_widget employees_cell = jqg_top_widget('employee', :cell_class => 'employees_standalone')
-    embed_widget(employees_cell, jqg_widget('employee_section'))
-    embed_widget(employees_cell, jqg_widget('person', :cell_class => 'people_lookup'))
     super
-    @content = render_widget(employees_cell.name)
+    use_widgets do |root|
+      root << jqg_top_widget('employee', :cell_class => 'employees_standalone') do |empwid|
+        jqg_child_widget(empwid, 'employee_section')
+        jqg_child_widget(empwid, 'person', :cell_class => 'people_lookup', :selector_for => :person_id)
+      end
+    end
     render
   end
-
+  
   
 end

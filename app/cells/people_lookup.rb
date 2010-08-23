@@ -13,6 +13,7 @@ class PeopleLookup < JqgridWidgetCell
       :row_action => 'nothing',
       :height => 350
     })
+    # @selector_for = :person_id
     
     # @filters = [
     #   ['all', {:name => 'All'}],
@@ -42,8 +43,8 @@ class PeopleLookup < JqgridWidgetCell
   # Returning nil means that the child is showing something like a one-to-many relation.
   # TODO: This could potentially be drawn from information about has_many or belongs_to settings in
   # the model.  But setting it explicitly is ok for now.
-  def selector_for
-    :person_id
-  end      
+  # def selector_for
+  #   :person_id
+  # end      
   
 end

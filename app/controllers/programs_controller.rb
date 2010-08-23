@@ -5,11 +5,11 @@ class ProgramsController < JqgridWidgetController
   # This is the simplest possible screen, in order to test the basics.
   
   def index
-    use_widget programs_cell = jqg_top_widget('program')
     super
-    @content = render_widget(programs_cell.name)
+    use_widgets do |root|
+      root << jqg_top_widget('program')
+    end
     render
   end
-
   
 end
